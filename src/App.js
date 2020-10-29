@@ -1,23 +1,55 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
+import TabSwitcher from "./auth/TabSwitcher";
+import SideBar from "./sections/Sidebar";
+import Logout from "./components/Logout";
+
+import Account from "./sections/Account";
+import About from "./sections/About";
+import PrivacyPolicy from "./sections/PrivacyPolicy";
+import ContactUs from "./sections/ContactUs";
+
+import CreateCharacter from "./sections/CreateCharacter";
+import MyCharacters from "./sections/MyCharacters";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router >
+       {isLoggedIn ? <><SideBar /><Logout /></> : <TabSwitcher /> }
+       <Switch>
+          <Route exact path="/">
+            <MyCharacters />
+          </Route>
+          <Route exact path="/account">
+            <Account />
+          </Route>
+          <Route exact path="/mycharacters">
+            <MyCharacters />
+          </Route>
+          <Route exact path="/createnewcharacter">
+            <CreateCharacter />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/contactus">
+            <ContactUs />
+          </Route>
+          <Route exact path="/privacypolicy">
+            <PrivacyPolicy />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
