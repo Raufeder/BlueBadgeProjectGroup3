@@ -24,20 +24,20 @@ const Sidebar = (props) => {
             <div>
                 <Nav className="mainNav" vertical>
                     <NavItem>
-                        <NavLink className="NavLink" to="/account">Account</NavLink>
+                        <Link to="/account"><NavLink className="NavLink" to="/account">Account</NavLink></Link>
                     </NavItem>
                     <NavItem>
-                        <NavLink className="NavLink" to="/mycharacters">My Characters</NavLink>
+                        <Link to="/mycharacters"><NavLink className="NavLink" to="/mycharacters">My Characters</NavLink></Link>
                     </NavItem>
                     <NavItem>
-                        <NavLink className="NavLink" to="/createnewcharacter">Create A Character</NavLink>
+                        <Link to="/createnewcharacter"><NavLink className="NavLink" to="/createnewcharacter">Create A Character</NavLink></Link>
                     </NavItem>
                     </Nav>
                     <div className="footer">
                 <footer>
-                            <Link className="footerLink" to="/About">About</Link> | 
-                            <Link className="footerLink" to="/contactus"> Contact Us</Link> | 
-                            <Link className="footerLink" to="/privacypolicy"> Privacy Policy</Link>
+                    <Link className="footerLink" to="/About">About</Link> | 
+                    <Link className="footerLink" to="/contactus"> Contact Us</Link> | 
+                    <Link className="footerLink" to="/privacypolicy"> Privacy Policy</Link>
                 </footer>
                 </div>
             </div>
