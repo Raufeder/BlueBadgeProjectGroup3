@@ -19,32 +19,32 @@ import CreateCharacter from "./sections/CreateCharacter";
 import MyCharacters from "./sections/MyCharacters";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-
+  let pageContainerStyle = {position: "fixed", left: "350px", right: "0px"};
   return (
     <div className="App">
       <Router >
-       {isLoggedIn ? <><SideBar /><Logout /></> : <TabSwitcher /> }
+       {isLoggedIn ? <><SideBar /><Logout /></> : <TabSwitcher setIsLoggedIn={setIsLoggedIn} /> }
        <Switch>
           { isLoggedIn ? <Route exact path="/"><MyCharacters /></Route> : <></> }
           <Route exact path="/account">
-            <Account />
+            <div style={pageContainerStyle}><Account /></div>
           </Route>
           <Route exact path="/mycharacters">
-            <MyCharacters />
+            <div style={pageContainerStyle}><MyCharacters /></div>
           </Route>
           <Route exact path="/createnewcharacter">
-            <CreateCharacter />
+            <div style={pageContainerStyle}><CreateCharacter /></div>
           </Route>
           <Route exact path="/about">
-            <About />
+            <div style={pageContainerStyle}><About /></div>
           </Route>
           <Route exact path="/contactus">
-            <ContactUs />
+            <div style={pageContainerStyle}><ContactUs /></div>
           </Route>
           <Route exact path="/privacypolicy">
-            <PrivacyPolicy />
+            <div style={pageContainerStyle}><PrivacyPolicy /></div>
           </Route>
         </Switch>
       </Router>

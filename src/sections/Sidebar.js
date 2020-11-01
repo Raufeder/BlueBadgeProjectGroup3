@@ -11,8 +11,8 @@ import IndividualUser from "../components/IndividualUser";
 const Sidebar = (props) => {
 
     return (
-
         <div className="mainSidebar">
+            
             <div>
             <img className="sidebarLogo" src={logo} alt="personary logo"/>
             </div>

@@ -3,7 +3,7 @@ import React from "react";
 const EditFieldInput = (props) => {
 
     return (
-        <div>TextField Comp</div>
+        <div style={{color:"black"}}>TextField Comp</div>
     )
 };
 

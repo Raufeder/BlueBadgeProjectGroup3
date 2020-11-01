@@ -40,7 +40,7 @@ const TabSwitcher = (props) => {
             </Nav>
             <TabContent style={{border: "1px solid black"}} activeTab={activeTab}>
                 <TabPane tabId="1">
-                    <Login />
+                    <Login setIsLoggedIn={props.setIsLoggedIn} />
                 </TabPane>
                 <TabPane tabId="2">
                     <Register />
