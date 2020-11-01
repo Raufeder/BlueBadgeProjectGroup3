@@ -15,10 +15,12 @@ const TabSwitcher = (props) => {
         if(activeTab !== tab) setActiveTab(tab);
     }
 
+    let navItemStyle = { backgroundColor: "white", width: "47%", borderRadius: "5px 5px 0px 0px" };
+
     return (
         <div style={{width: "60%", height: "40%", marginLeft: "auto", marginRight: "auto"}}>
-            <Nav tabs>
-                <NavItem>
+            <Nav style={{ width: "100%"}}tabs>
+                <NavItem style={navItemStyle}>
                 <NavLink
                     className={classnames({ active: activeTab === '1' })}
                     onClick={() => { toggle('1'); }}
@@ -26,7 +28,8 @@ const TabSwitcher = (props) => {
                     Login
                 </NavLink>
                 </NavItem>
-                <NavItem>
+                <div style={{ width: "6%" }}></div>
+                <NavItem style={navItemStyle}>
                 <NavLink
                     className={classnames({ active: activeTab === '2' })}
                     onClick={() => { toggle('2'); }}

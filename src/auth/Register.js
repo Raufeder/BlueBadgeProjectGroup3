@@ -3,28 +3,28 @@ import { Form, Button, Input, Label, FormGroup } from 'reactstrap';
 // TODO import styles here
 
 const Register = (props) => {
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
 
-    const triggerEmailInputChange = (event) => setEmail(event.target.value);
+    const triggerUsernameInputChange = (event) => setUsername(event.target.value);
     const triggerPasswordInputChange = (event) => setPassword(event.target.value);
     const triggerPasswordConfirmInputChange = (event) => setPasswordConfirm(event.target.value);
 
     const registerSubmit = (event) => {
         event.preventDefault();
 
-        if(email && password){
+        if(username && password){
             if(password === passwordConfirm) {
                 fetch('http://localhost:8080/user/register', {
                     method: 'POST',
                     headers: {
-                        "Content-Type": "applicartion/json"
+                        "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({
-                        email: email,
+                    body: JSON.stringify({ user: {
+                        username: username,
                         password: password
-                    })
+                    }})
                 })
                 .then(response => response.json())
                 .then(() => {
@@ -35,7 +35,7 @@ const Register = (props) => {
                     //         "Content-Type": "application/json"
                     //     },
                     //     body: JSON.stringify({
-                    //         email: email,
+                    //         username: username,
                     //         password: password
                     //     })
                     // })
@@ -59,15 +59,15 @@ const Register = (props) => {
             <Form onSubmit={registerSubmit}>
                 <h3>Register</h3>
                 <FormGroup>
-                    <Label htmlFor="registerEmail">Email: </Label>
-                    <Input onChange={triggerEmailInputChange} value={email} id="registerEmail" type="email" name="registerEmail" />
+                    <Label htmlFor="registerUsername">Username: </Label>
+                    <Input onChange={triggerUsernameInputChange} value={username} id="registerUsername" type="text" name="regsterUsername" />
                 </FormGroup>
                 <FormGroup>
-                    <Label htmlFor="registerEmail">Password: </Label>
+                    <Label htmlFor="registerPassword">Password: </Label>
                     <Input onChange={triggerPasswordInputChange} value={password} id="registerPassword" type="password" name="registerPassword" />
                 </FormGroup>
                 <FormGroup>
-                    <Label htmlFor="registerEmail">Confirm Password: </Label>
+                    <Label htmlFor="registerConfirmPassword">Confirm Password: </Label>
                     <Input onChange={triggerPasswordConfirmInputChange} value={passwordConfirm} id="registerConfirmPassword" type="password" name="registerConfirmPassword" />
                 </FormGroup>
                 <Button>Register</Button>
