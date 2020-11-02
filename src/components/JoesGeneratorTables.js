@@ -12,12 +12,17 @@ function getRandomValueFromTuples( tuples ){
 //let hairColorTuples = [ ["blue", 0.1], ["cyan", 0.25], ["magenta", 0.25], ["pink", 0.2], ["red", 0.2] ];
 //console.log( getRandomValueFromTuples(hairColorTuples) );
 
+// Generates a random number from 1 to the chosen parameter
+function rndDieRoll(die) {
+  return Math.ceil ( Math.random() * die ) ;
+};
+
 // ************************************************************************************************************************ //
 // ***                                                  AGE                                                             *** //
 
 // CharAge... generates a random age category as well as a base chance of having gray hair
 //            percentages are generally accurate for US pop, BUT skewed slightly upwards from young-->teen
-//                   age category      gray-mod   marry-mod  base%
+//                   age category     gray-mod  marry-cohort  base%
 let ageTuples = [ [ ["young",             0,        0],       0.04 ],
                   [ ["youngish",          0,        0],       0.04 ],
                   [ ["teen",              2,        0],       0.08 ],
@@ -43,7 +48,7 @@ let ageTuples = [ [ ["young",             0,        0],       0.04 ],
 let rndBaseAge = getRandomValueFromTuples(ageTuples);
 let CharAge = rndBaseAge[0];  //  THIS IS THE RANDOM AGE DESCRIPTOR
 let GrayHairfromAge = rndBaseAge[1];
-let canBeMarried = rndBaseAge[2];
+let canBeMarried = rndBaseAge[2];       // Used in several locations as a sort of general age category or cohort
 console.log("Age is:", CharAge);
 console.log("___________________________________________");
 
@@ -339,3 +344,52 @@ let personalityTypeTuples = [ [finalMyersBriggs, 0.75], [finalDiSC, 0.25] ];
 let CharPersonalityType = getRandomValueFromTuples(personalityTypeTuples);  // THIS IS PERSONALITY TYPE
 console.log("Personality type:", CharPersonalityType);
 console.log("___________________________________________");
+
+
+
+// ************************************************************************************************************************ //
+// ***                                          RANDOM NAMES                                                            *** //
+
+
+// Top Names Over the Last 100 Years - Social Security Administration
+let mostCommonFirstNamesInLastCentury = [ "James / Mary", "John / Patricia", "Robert / Jennifer", "Michael / Linda", "William / Elizabeth", "David / Barbara", "Richard / Susan", "Joseph / Jessica", "Thomas / Sarah", "Charles / Karen", "Christopher / Nancy", "Daniel / Lisa", "Matthew / Margaret", "Anthony / Betty", "Donald / Sandra", "Mark / Ashley", "Paul / Dorothy", "Steven / Kimberly", "Andrew / Emily", "Kennth / Donna", "Joshua / Michelle", "Kevin / Carol", "Brian / Amanda", "George / Melissa", "Edward / Deborah", "Ronald / Stephanie", "Timothy / Rebecca", "Jason / Laura", "Jeffrey / Sharon", "Ryan / Cynthia", "Jacob / Kathleen", "Gary / Amy", "Nicholas / Shirley", "Eric / Angela", "Johnathan / Helen", "Stephen / Anna", "Larry / Brenda", "Justin / Pamela", "Scott / Nicole", "Brandon / Samantha", "Benjamin / Katherine", "Samuel / Emma", "Frank / Ruth", "Gregory / Christine", "Raymond / Catherine", "Alexander / Debra", "Patrick / Rachel", "Jack / Carolyn", "Dennis / Janet", "Jerry / Virginia", "Tyler / Maria", "Aaron / Heather", "Jose / Diane", "Henry / Julie", "Adam / Joyce", "Douglas / Victoria", "Nathan / Kelly", "Peter / Christina", "Zachary / Lauren", "Kyle / Joan", "Walter / Evelyn", "Harold / Olivia", "Jermey / Judith", "Ethan / Megan", "Carl / Cheryl", "Keith / Martha", "Roger / Andrea", "Gerald / Frances", "Christian / Hannah", "Terry / Jacqueline", "Sean / Anna", "Arthur / Gloria", "Austin / Jean", "Noah / Kathryn", "Lawrence / Alice", "Jesse / Teresa", "Joe / Sara", "Bryan / Janice", "Billy / Doris", "Jordan / Madison", "Albert / Julia", "Dylan / Grace", "Bruce / Judy", "Willie / Abigail", "Gabriel / Marie", "Alan / Denise", "Juan / Beverly", "Logan / Amber", "Wayne / Theresa", "Ralph / Marilyn", "Roy / Danielle", "Eugene / Diana", "Randy / Brittany", "Vincent / Natalie", "Russell / Sophia", "Louis / Rose", "Philip / Isabella", "Bobby / Alexis", "Johnny / Kayla", "Bradley / Charlotte" ];
+let rndMostCommonFirstNamesInLastCentury = mostCommonFirstNamesInLastCentury[rndDieRoll(100)];  //  Most popular name pair of last century
+
+// 1920-1950
+let mostCommonNamesCohort3 = [ "Larry / Sadie", "Emil / Regina", "Antonio / Victoria", "Wilfred / Henrietta", "Elbert / Della", "Juan / Bettie", "Alan / Lila", "Allan / Fern", "Lonnie / Faye", "Nelson / Johnnie", "Forrest / Jeanette", "Oscar / Ellen", "Gene / Lucy", "Jerry / Minnie", "Douglas / Sylvia", "Johnnie / Donna", "Claude / Leona", "Don / Rosemary", "Eddie / Stella", "Roland / Mattie", "Everett / Margie", "Maurice / Genevieve", "Charlie / Julia", "Warren / Rosemary", "Jerome / Jeanette", "Jesse / Marian", "Patrick/ Willie", "Stephen / Beatrice", "Curtis / Margie", "Arnold / Billie", "Gilbert / Vivian", "Elmer / Eva", "Lester / Kathryn", "Benny Genevieve", "Clifton / Cynthia", "Archie / Nina", "Oliver / Patty", "Clinton / Fannie", "Barry / Diana", "Juan / Jennie", "Salvatore / Hilda", "Nelson / Marguerite", "Jon / Johnnie", "Alex / Daisy", "Keith / Anita", "Clifford / Dianne", "Rodney / Ruby", "Gordon / Irene", "Jimmie / Juanita", "Jesse / Maureen", "Vincent / Loretta", "Warren / Jeannette", "Lloyd / Constance", "Leon / Lynn", "Jerome / Marlene", "Virgil / Marianne", "Morris / Stephanie", "Matthew / Jill", "Earnest / Mattie", "Lyle / Minnie", "Max / Caroline", "Bennie / Michele", "Wendell / Veronica", "Kent / Patty", "JJonathan / Rosie", "Fredrick / Stella" ];
+let rndMostCommonNamesCohort3 = mostCommonFirstNamesInLastCentury[rndDieRoll(mostCommonNamesCohort3.length)];  //  Cohort 3 random name pair
+
+// 1950-1980
+let mostCommonNamesCohort2 = [ "Vincent / Doris", "Tommy / Maureen", "Francis / Wendy", "Marvin / Michelle", "Dean / Anna", "Rick / Marsha", "Victor / Angela", "Norman / Sarah", "Early / Sylvia", "Jose / Jill", "Calvin / Dawn", "Freddie / Rachel", "Brent / Shelia", "Harvey / Roxanne", "Gerard / Carole", "Stuart / Lillian", "Johnnie / Josephine", "Herman / Carrie", "Lynn / Patty", "Rex / Sherri", "Arnold / Doreen", "Kelly / Grace", "Greg / Tamara", "Albert / Gloria", "Jack / Betty", "Darren / Stacey", "Ronnie / Penny", "Ralph / Shirley", "Joel / Victoria", "Louis / Jean", "Jim / Peggy", "Michael / Melanie", "Marc / Joan", "Stuart / Shelia", "Rickey / Marcia", "Shane / Doris", "Franklin / Kristen", "Leon / Audrey", "Gregg / Karla", "Bob / Jody", "Darin / Glenda", "Leslie / Patty", "Herbert / Amanda", "Gene / Pam", "Jimmy / Anna", "Victor / Margaret", "Lawrence / Victoria", "Dustin / Cindy", "Gerald / Jodi", "Walter / Natalie", "Alexander / Brandi", "Joel / Kristi", "Christian / Suzanne", "Christopher / Samantha", "Alan / Beth", "Duane / Gloria", "Trevor / Mindy", "Jeff / Tracie", "Geoffrey / Angie", "Hector / Kellie", "Terrence / Claudia", "Terrance / Ruth", "Oscar / Wanda", "Jaime / Jeanette", "Clifford / Cathy", "Harry / Adrienne" ];
+let rndMostCommonNamesCohort2 = mostCommonNamesCohort2[rndDieRoll(mostCommonNamesCohort2.length)];  //  Cohort 2 random name pair
+
+// 1980-2000
+let mostCommonNamesCohort1 = [ "Christian / Misty", "Curtis / Katrina", "Jeffery / Tracy", "Randy / Casey", "Jeremiah / Kelsey", "Adrian / Kara", "Jesus / Nichole", "Luke / ALison", "Alan / Heidi", "Trevor / Alexis", "Russel / Molly", "Omar / Audrey", "Brad / Katelyn", "Reginal / Regina", "Fernando / Carla", "Darrell / Cheryl", "Sergio / Olivia", "Frederick / Autumn", "Julian / Claudia", "Jaime / Jordan", "Jermaine / Nina", "Geoffrey / Taylor", "Seth / Monica", "Mitchell / Sabrina", "Adrian / Madeline", "Victor / Caroline", "Miguel / Molly", "Shane / Erika", "Chase / Mackenzie", "Isaac / Leah", "Spencer / Diana", "Lucas / Whitney", "Jack / Cheyenne", "Tanner / Bailey", "Angel / Christine", "Vincent / Meghan", "Isaiah / Lindsay", "Dalton / Angelica", "Marco / Isabel", "Allen / Ashlee", "Ruben / Felicia", "Calvin / Marisa", "Mathew / Mercedes", "Randy / Mckenzie", "Berny / Jasmin", "Jerry / Kirsta", "Hayden / Yesenia", "Alexis / Diamond", "Parker / Evelyn", "Brady / Cindy", "Tony / Selena", "Pedro / Brandy", "Craig / Gina", "Larry / Mia", "Andre / Faith", "Maxwell / Audrey", "Ivan / Angelica", "Philip / Nancy", "Levy / Dana", "Sergio / Krystal", "Roberto / Alejandra", "Darius / Ariana", "Andres / Summer", "Cristian / Mikayla", "Hector / Raven", "Drew / Lydia" ];
+let rndMostCommonNamesCohort1 = mostCommonNamesCohort1[rndDieRoll(mostCommonNamesCohort1.length)];  //  Cohort 1 random name pair
+
+// 2000-2020
+let mostCommonNamesCohort0 = [ "Jacob / Emily", "Michael / Madison", "Joshua / Emma", "Matthew / Olivia", "Daniel / Hannah", "Gabriel / Julia", "Jose / Morgan", "Austin / Destiny", "Kevin / Rachel", "Elijah / Ella", "Caleb / Kaitlyn", "Sebastian / Evelyn", "Xavier / Maya", "Timothy / Claire", "Carter / Autumn", "Wyatt / Jocelyn", "Brayden / Ariana", "Tristan / Molly", "Alejandro / Isabelle", "Henry / Madelyn", "Victor / Melissa", "Trevor / Jacqueline", "Bryce / Marissa", "Wesley / Angelica", "Oliver / Hope", "Trenton / Chelsea", "Hector / Alana", "Malachi / Liliana", "Jalen / Brittany", "Raymond / Camila", "Gregory / Makenzie", "Abraham / Lilly", "Elias / Veronica", "Leonardo / Abby", "Sergio / Jazmin", "Donovan / Adrianna", "Colby / Delaney", "Marco / Karina", "Bryson / Jasmin", "Noah / Emma", "Liam / Olivia", "Jacob / Sophia", "William / Isabella", "Mason / Ava", "Thomas / Mila", "Eli / Nora", "Jaxon / Ellie", "Connor / Bella", "Nicholas / Alexa", "Jeremiah / Lucy", "Abraham / Rebecca", "Brady / Michelle", "Sean / Alina", "Jake / Catherine", "Tucker / Londyn", "Nicolas / Summer", "Rowan / Izabella", "Amir / Jayla", "Avery / Katelyn", "King / Daniela", "Gael / Harmony", "Kenneth / Alana", "Bradley / Amaya", "Cayden / Emerson", "Xander / Julianna", "Graham / Cecilia" ];
+let rndMostCommonNamesCohort0 = mostCommonNamesCohort0[rndDieRoll(mostCommonNamesCohort0.length)];  //  Cohort 0 random name pair
+
+
+// Get the appropriate age cohort of popular names
+let cohortsRndPopularName = "";
+
+switch (canBeMarried) {
+  case 0:
+    cohortsRndPopularName = rndMostCommonNamesCohort0;
+    break;
+  case 1:
+    cohortsRndPopularName = rndMostCommonNamesCohort1;
+    break;
+  case 2:
+    cohortsRndPopularName = rndMostCommonNamesCohort2;
+    break;
+  case 3:
+    cohortsRndPopularName = rndMostCommonNamesCohort3;
+};
+
+
+let firstNameTuples = [ [rndMostCommonFirstNamesInLastCentury, 0.5], [cohortsRndPopularName, 0.5] ];
+let rndFirstNamePairs = getRandomValueFromTuples(firstNameTuples);  //  First name of full name (CharName)
+console.log("The random first name pair is:", rndFirstNamePairs)
