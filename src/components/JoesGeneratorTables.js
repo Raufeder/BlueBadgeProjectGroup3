@@ -350,7 +350,7 @@ console.log("___________________________________________");
 // ************************************************************************************************************************ //
 // ***                                          RANDOM NAMES                                                            *** //
 
-
+// *** FIRST NAME ***
 // Top Names Over the Last 100 Years - Social Security Administration
 let mostCommonFirstNamesInLastCentury = [ "James / Mary", "John / Patricia", "Robert / Jennifer", "Michael / Linda", "William / Elizabeth", "David / Barbara", "Richard / Susan", "Joseph / Jessica", "Thomas / Sarah", "Charles / Karen", "Christopher / Nancy", "Daniel / Lisa", "Matthew / Margaret", "Anthony / Betty", "Donald / Sandra", "Mark / Ashley", "Paul / Dorothy", "Steven / Kimberly", "Andrew / Emily", "Kennth / Donna", "Joshua / Michelle", "Kevin / Carol", "Brian / Amanda", "George / Melissa", "Edward / Deborah", "Ronald / Stephanie", "Timothy / Rebecca", "Jason / Laura", "Jeffrey / Sharon", "Ryan / Cynthia", "Jacob / Kathleen", "Gary / Amy", "Nicholas / Shirley", "Eric / Angela", "Johnathan / Helen", "Stephen / Anna", "Larry / Brenda", "Justin / Pamela", "Scott / Nicole", "Brandon / Samantha", "Benjamin / Katherine", "Samuel / Emma", "Frank / Ruth", "Gregory / Christine", "Raymond / Catherine", "Alexander / Debra", "Patrick / Rachel", "Jack / Carolyn", "Dennis / Janet", "Jerry / Virginia", "Tyler / Maria", "Aaron / Heather", "Jose / Diane", "Henry / Julie", "Adam / Joyce", "Douglas / Victoria", "Nathan / Kelly", "Peter / Christina", "Zachary / Lauren", "Kyle / Joan", "Walter / Evelyn", "Harold / Olivia", "Jermey / Judith", "Ethan / Megan", "Carl / Cheryl", "Keith / Martha", "Roger / Andrea", "Gerald / Frances", "Christian / Hannah", "Terry / Jacqueline", "Sean / Anna", "Arthur / Gloria", "Austin / Jean", "Noah / Kathryn", "Lawrence / Alice", "Jesse / Teresa", "Joe / Sara", "Bryan / Janice", "Billy / Doris", "Jordan / Madison", "Albert / Julia", "Dylan / Grace", "Bruce / Judy", "Willie / Abigail", "Gabriel / Marie", "Alan / Denise", "Juan / Beverly", "Logan / Amber", "Wayne / Theresa", "Ralph / Marilyn", "Roy / Danielle", "Eugene / Diana", "Randy / Brittany", "Vincent / Natalie", "Russell / Sophia", "Louis / Rose", "Philip / Isabella", "Bobby / Alexis", "Johnny / Kayla", "Bradley / Charlotte" ];
 let rndMostCommonFirstNamesInLastCentury = mostCommonFirstNamesInLastCentury[rndDieRoll(100)];  //  Most popular name pair of last century
@@ -392,4 +392,35 @@ switch (canBeMarried) {
 
 let firstNameTuples = [ [rndMostCommonFirstNamesInLastCentury, 0.5], [cohortsRndPopularName, 0.5] ];
 let rndFirstNamePairs = getRandomValueFromTuples(firstNameTuples);  //  First name of full name (CharName)
-console.log("The random first name pair is:", rndFirstNamePairs)
+
+
+// *** MIDDLE NAME ***
+let maleMiddleInitialList = [ ["A", 0.09], ["B", 0.02], ["C", 0.03], ["D", 0.05], ["E", 0.08], ["F", 0.02], ["G", 0.02], ["H", 0.03], ["I", 0.02], ["J", 0.16], ["K", 0.02], ["L", 0.08], ["M", 0.05], ["N", 0.02], ["O", 0.02], ["P", 0.03], ["Q", 0.01], ["R", 0.07], ["S", 0.02], ["T", 0.03], ["U", 0.01], ["V", 0.01], ["W", 0.08], ["X", 0.01], ["Y", 0.01], ["Z", 0.01] ];
+let rndMaleMiddleInitial = getRandomValueFromTuples(maleMiddleInitialList);
+
+
+let femaleMiddleInitialList = [ ["A", 0.11], ["B", 0.02], ["C", 0.03], ["D", 0.02], ["E", 0.07], ["F", 0.03], ["G", 0.03], ["H", 0.02], ["I", 0.02], ["J", 0.05], ["K", 0.03], ["L", 0.12], ["M", 0.15], ["N", 0.04], ["O", 0.02], ["P", 0.02], ["Q", 0.01], ["R", 0.08], ["S", 0.03], ["T", 0.02], ["U", 0.01], ["V", 0.03], ["W", 0.01], ["X", 0.01], ["Y", 0.01], ["Z", 0.01] ];
+let rndFemaleMiddleInitial = getRandomValueFromTuples(femaleMiddleInitialList);
+
+let rndMiddleInitialPairs = `${rndMaleMiddleInitial}. / ${rndFemaleMiddleInitial}.`;  //  This is the random middle initial pair
+
+
+// *** SURNAME ***
+// Using sets taken from namecensus.com; using the top 100 as well middle and last from the top 1000 most common surnames in the U.S.
+let top100SurnamesInUS = ['Smith', 'Johnson', 'Williams', 'Jones', 'Brown', 'Davis', 'Miller', 'Wilson', 'Moore', 'Taylor', 'Anderson', 'Thomas', 'Jackson', 'White', 'Harris', 'Martin', 'Thompson', 'Garcia', 'Martinez', 'Robinson', 'Clark', 'Rodriguez', 'Lewis', 'Lee', 'Walker', 'Hall', 'Allen', 'Young', 'Hernandez', 'King', 'Wright', 'Lopez', 'Hill', 'Scott', 'Green', 'Adams', 'Baker', 'Gonzalez', 'Nelson', 'Carter', 'Mitchell', 'Perez', 'Roberts', 'Turner', 'Phillips', 'Campbell', 'Parker', 'Evans', 'Edwards', 'Collins', 'Stewart', 'Sanchez', 'Mooris', 'Rogers', 'Reed', 'Cook', 'Morgan', 'Bell', 'Murphy', 'Bailey', 'Rivera', 'Cooper', 'Richardson', 'Cox', 'Howard', 'Ward', 'Torres', 'Peterson', 'Gray', 'Ramirez', 'James', 'Watson', 'Brooks', 'Kelly', 'Sanders', 'Price', 'Bennett', 'Wood', 'Barnes', 'Ross', 'Henderson', 'Coleman', 'Jenkins', 'Perry', 'Powell', 'Long', 'Patterson', 'Hughes', 'Flores', 'Washington', 'Butler', 'Simmons', 'Foster', 'Gonzales', 'Bryant', 'Alexander', 'Russell', 'Griffin', 'Diaz', 'Hayes' ];
+let chosenTop100SurnamesInUS = top100SurnamesInUS[rndDieRoll(top100SurnamesInUS.length)];
+
+let middle100SurnamesInUS = [ 'Atkins', 'Wilcox', 'Pitts', 'Conley', 'Marquez', 'Burnett', 'Richard', 'Cochran', 'Chase', 'Davenport', 'Hood', 'Gates', 'Clay', 'Ayala', 'Sawyer', 'Roman', 'Vazquez', 'Dickerson', 'Hodge', 'Acosta', 'Flynn', 'Espinoza', 'Nicholson', 'Monroe', 'Wolf', 'Morrow', 'Kirk', 'Randall', 'Anthony', 'Whitaker', "O'Connor", 'Skinner', 'Ware', 'Molina', 'Kirby', 'Huffman', 'Bradford', 'Charles', 'Gilmore', 'Dominguez', "O'Neal", 'Bruce', 'Lang', 'Combs', 'Kramer', 'Heath', 'Hancock', 'Gallagher', 'Gaines', 'Shaffer', 'Short', 'Wiggins', 'Mathews', 'Mcclain', 'Fischer', 'Small', 'Melton', 'Hensley', 'Bond', 'Dyer', 'Camerson', 'Grimes', 'Contreras', 'Christian', 'Wyatt', 'Baxter', 'Snow', 'Mosley', 'Shepherd', 'Larsen', 'Hoover', 'Beasley', 'Glenn', 'Petersen', 'Whitehead', 'Meyers', 'Keith', 'Garrison', 'Vincent', 'Shields', 'Horn', 'Savage', 'Olsen', 'Schroeder', 'Hartman', 'Woodard', 'Mueller', 'Kemp', 'Deleon', 'Booth', 'Patel', 'Calhoun', 'Wiley', 'Eaton', 'Cline', 'Navarro', 'Harrell', 'Lester', 'Humpphrey', 'Parrish' ];
+let chosenMiddle100SurnamesInUS = middle100SurnamesInUS[rndDieRoll(middle100SurnamesInUS.length)];
+
+let lowest100SurnamesInUS = [ 'Cote', 'Reilly', 'Compton', 'Raymond', 'Mooney', 'Mcgowan', 'Craft', 'Cleveland', 'Clemons', 'Wynn', 'Nielsen', 'Baird', 'Stanton', 'Snider', 'Rosales', 'Bright', 'Witt', 'Stuart', 'Hays', 'Holden', 'Rutledge', 'Kinney', 'Clements', 'Castaneda', 'Slater', 'Hahn', 'Emerson', 'Conrad', 'Burks', 'Delaney', 'Pate', 'Lancaster', 'Sweet', 'Justice', 'Tyson', 'Sharpe', 'Whitfield', 'Talley', 'Marcias', 'Irwin', 'Burris', 'Ratliff', 'Mccray', 'Madden', 'Kaufman', 'Beach', 'Goff', 'Cash', 'Bolton', 'McFadden', 'Levine', 'Good', 'Byers', 'Kirkland', 'Kidd', 'Workman', 'Carney', 'Dale', 'Mcleod', 'Holcomb', 'England', 'Finch', 'Head', 'Burt', 'Hendrix', 'Sosa', 'Haney', 'Franks', 'Sargent', 'Nieves', 'Downs', 'Rasmussen', 'Bird', 'Hewitt', 'Lindsay', 'Le', 'Foreman', "O'Neil", 'Delacruz', 'Vinson', 'Dejesus', 'Hyde', 'Forbes', 'Gilliam', 'Guthrie', 'Wooten', 'Huber', 'Barlow', 'Boyle', 'Mcmahon', 'Buckner', 'Rocha', 'Puckett', 'Langley', 'Knowles', 'Cooke', 'Velazquez', 'Whitley', 'Noel', 'Vang' ];
+let chosenLowest100SurnamesInUS = lowest100SurnamesInUS[rndDieRoll(lowest100SurnamesInUS.length)];
+
+
+let surnamesTupleList = [ [chosenTop100SurnamesInUS, 0.5], [chosenMiddle100SurnamesInUS, 0.3], [lowest100SurnamesInUS, 0.2] ];
+let rndSurname = getRandomValueFromTuples(surnamesTupleList);
+
+
+CharName = `${rndFirstNamePairs}  ${rndMiddleInitialPairs}  ${rndSurname}`; //  THIS IS THE NAME
+console.log("Random full name is:", CharName);
+
