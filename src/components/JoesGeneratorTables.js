@@ -1,5 +1,5 @@
 
-//  PRIMARY RANDOM FUNCITON FOR COMPLEX TABLES
+ PRIMARY RANDOM FUNCITON FOR COMPLEX TABLES
 function getRandomValueFromTuples( tuples ){
     let roll = Math.random();
     for(let i=0; i < tuples.length; i++ ){
