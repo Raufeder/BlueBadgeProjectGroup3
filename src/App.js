@@ -19,7 +19,7 @@ import CreateCharacter from "./sections/CreateCharacter";
 import MyCharacters from "./sections/MyCharacters";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
   return (
@@ -27,9 +27,7 @@ function App() {
       <Router >
        {isLoggedIn ? <><SideBar /><Logout /></> : <TabSwitcher /> }
        <Switch>
-          <Route exact path="/">
-            <MyCharacters />
-          </Route>
+          { isLoggedIn ? <Route exact path="/"><MyCharacters /></Route> : <></> }
           <Route exact path="/account">
             <Account />
           </Route>
