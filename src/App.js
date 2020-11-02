@@ -6,6 +6,9 @@ import {
   Route
 } from "react-router-dom";
 
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import TabSwitcher from "./auth/TabSwitcher";
 import SideBar from "./sections/Sidebar";
 import Logout from "./components/Logout";
@@ -21,7 +24,7 @@ import MyCharacters from "./sections/MyCharacters";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-  let pageContainerStyle = {position: "fixed", left: "350px", right: "0px"};
+  let pageContainerStyle = {position: "fixed", left: "350px", right: "0px", height: "100%", overflow: "auto"};
   return (
     <div className="App">
       <Router >

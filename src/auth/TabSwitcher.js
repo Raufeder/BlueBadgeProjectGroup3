@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import classnames from 'classnames';
 

@@ -3,7 +3,7 @@ import React from "react";
 const IndividualCharacter = (props) => {
 
     return (
-        <div>IndividualCharacter Comp</div>
+        <img class="characterPic" src={props.charImg} alt={props.alt} />
     )
 };
 
