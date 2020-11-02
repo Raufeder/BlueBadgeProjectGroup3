@@ -1,44 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {Nav, NavItem, NavLink} from 'reactstrap';
-import logo from '../assets/personarylogo.png'
-import userimg from '../assets/userimg.png'
-import '../styles/sidebar.css'
-import IndividualUser from "../components/IndividualUser";
 
+import IndividualUser from "../components/IndividualUser";
 
 const Sidebar = (props) => {
 
     return (
-
-        <div className="mainSidebar">
-            <div>
-            <img className="sidebarLogo" src={logo} alt="personary logo"/>
-            </div>
-            <div className="sidebarUser">
-            <img className="profilePic" src={userimg} alt="user profile image"/>
-            <h2>Welcome back!</h2>
+        <div style={/*Hack in some sidebar style real quick*/
+                {position: "fixed", zIndex: "1", top: 0, left: 0, height: "100%", 
+                width: "15%",float: "left", border: "2px solid black"}
+            } >Sidebar Comp
             <IndividualUser />
-            </div>
             <div>
-                <Nav className="mainNav" vertical>
-                    <NavItem>
-                        <Link to="/account"><NavLink className="NavLink" to="/account">Account</NavLink></Link>
-                    </NavItem>
-                    <NavItem>
-                        <Link to="/mycharacters"><NavLink className="NavLink" to="/mycharacters">My Characters</NavLink></Link>
-                    </NavItem>
-                    <NavItem>
-                        <Link to="/createnewcharacter"><NavLink className="NavLink" to="/createnewcharacter">Create A Character</NavLink></Link>
-                    </NavItem>
-                    </Nav>
-                    <div className="footer">
+                <ul>
+                    <li>
+                        <Link to="/account">Account</Link>
+                    </li>
+                    <li>
+                        <Link to="/mycharacters">My Characters</Link>
+                    </li>
+                    <li>
+                        <Link to="/createnewcharacter">Create A Character</Link>
+                    </li>
+                </ul>
                 <footer>
-                    <Link className="footerLink" to="/About">About</Link> | 
-                    <Link className="footerLink" to="/contactus"> Contact Us</Link> | 
-                    <Link className="footerLink" to="/privacypolicy"> Privacy Policy</Link>
+                    <ul>
+                        <li>
+                            <Link to="/About">About</Link>
+                        </li>
+                        <li>
+                            <Link to="/contactus">Contact Us</Link>
+                        </li>
+                        <li>
+                            <Link to="/privacypolicy">Privacy Policy</Link>
+                        </li>
+                    </ul>
                 </footer>
-                </div>
             </div>
         </div>
     )
