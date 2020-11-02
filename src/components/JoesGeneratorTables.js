@@ -118,7 +118,7 @@ if (grayHairRoll <= finalChanceOfGrayHair) {
   grayHairMessage = "";
 };
 
-CharHair = `${rndHairLength} ${rndHairTexture} ${rndHairColor} hair ${grayHairMessage}` //  THIS IS THE WHOLE HAIR DESCRIPTION
+let CharHair = `${rndHairLength} ${rndHairTexture} ${rndHairColor} hair ${grayHairMessage}` //  THIS IS THE WHOLE HAIR DESCRIPTION
 console.log("Hair is:", CharHair);
 console.log("___________________________________________");
 
@@ -286,10 +286,10 @@ let qtyChlildrenList = [ [ ["none",   "",         rndAddonsToChildren],     0.3]
                          [ ["5+",     hasTwins,   rndAddonsToChildren],     0.02] ];
 
 if (canBeMarried > 0 ) {
-  rndQtyChildren = getQtyOfChildrenFromTuples(qtyChlildrenList, childrenQtyModifier); // THIS IS THE # OF CHILDREN or
-  qtyOfChildren = rndQtyChildren[0];
-  childrenTwinsStatement = rndQtyChildren[1];
-  addtionalChildrenDetails = rndQtyChildren[2];
+  let rndQtyChildren = getQtyOfChildrenFromTuples(qtyChlildrenList, childrenQtyModifier); // THIS IS THE # OF CHILDREN or
+  let qtyOfChildren = rndQtyChildren[0];
+  let childrenTwinsStatement = rndQtyChildren[1];
+  let addtionalChildrenDetails = rndQtyChildren[2];
   CharChildren = `${qtyOfChildren}${childrenTwinsStatement}${addtionalChildrenDetails}`
 } else {
   CharChildren = "none"; // THIS IS THE # OF CHILDREN
@@ -421,6 +421,6 @@ let surnamesTupleList = [ [chosenTop100SurnamesInUS, 0.5], [chosenMiddle100Surna
 let rndSurname = getRandomValueFromTuples(surnamesTupleList);
 
 
-CharName = `${rndFirstNamePairs}  ${rndMiddleInitialPairs}  ${rndSurname}`; //  THIS IS THE NAME
+let CharName = `${rndFirstNamePairs}  ${rndMiddleInitialPairs}  ${rndSurname}`; //  THIS IS THE NAME
 console.log("Random full name is:", CharName);
 
