@@ -38,7 +38,8 @@ function App() {
     }).then((res) => res.json())
     .then((logData) => {
         setAccountInfo(logData)
-        console.log(logData)
+        setIsLoggedIn(true)
+        console.log("accountInfoLogged " + logData)
     })
   }
 
