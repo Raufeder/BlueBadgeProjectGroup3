@@ -30,10 +30,16 @@ function App() {
  const updateToken = (token) => { localStorage.setItem("sessionToken", token); };
 
 
+<<<<<<< HEAD
   const fetchAccountInfo = () => {
     fetch('http://localhost:8080/user/view', {
         method: 'POST',
         body: JSON.stringify( {user: {username: "test", password: "test" }} ),
+=======
+  const fetchAccountInfo = (userName) => {
+    fetch(`http://localhost:8080/user/view/${userName}`, {
+        method: 'GET',
+>>>>>>> de234515c2f86b328b26d2e573eac5208d07c590
         headers: new Headers({
             "Content-Type": 'application/json'
             // "Authorization": localStorage.getItem('sessionToken')
@@ -41,7 +47,8 @@ function App() {
     }).then((res) => res.json())
     .then((logData) => {
         setAccountInfo(logData)
-        console.log(logData)
+        setIsLoggedIn(true)
+        console.log("accountInfoLogged " + logData)
     })
   }
 
