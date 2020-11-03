@@ -1,4 +1,4 @@
-.about {
+.contactForm {
   text-align: left;
   background-color: #303c6c;
   height: 900px;  
@@ -13,16 +13,30 @@
 h2 {
   text-align: center;
   margin-top: 10vh;
-}
-
-h3 {
-  text-align: center;
-  margin-top: 30px;
   color: #FBE8A6;
 }
 
-.subTitle {
-  color: white;
-  text-align: center;
-  margin-top: 10px;
+
+.formLabels {
+  margin-top: 30px;
+  color: #FBE8A6;
+  font-size: 20px;
+}
+
+#inputButton {
+  font-weight: bold;
+  width: 100px;
+  background-color: #FBE8A6;
+}
+
+#email-subject {
+
+}
+
+#full-name {
+  width: 400px;
+}
+
+#email-address {
+  width: 400px;
 }
