@@ -30,6 +30,7 @@ function App() {
  const updateToken = (token) => { localStorage.setItem("sessionToken", token); };
 
 
+<<<<<<< HEAD
 //   const fetchAccountInfo = () => {
 //     fetch('http://localhost:8080/user/view', {
 //         method: 'POST',
@@ -50,11 +51,27 @@ function App() {
 //     fetchAccountInfo();
 // }, [])
 
+=======
+  const fetchAccountInfo = () => {
+    fetch('http://localhost:8080/user/view', {
+        method: 'GET',
+        headers: new Headers({
+            "Content-Type": 'application/json',
+            "authorization": "Bearer " + localStorage.getItem('sessionToken')
+        })
+    }).then((res) => res.json())
+    .then((logData) => {
+        setAccountInfo(logData)
+        console.log(logData)
+    })
+  }
+
+>>>>>>> a226f351348a8cf6df6c9e5a4c2a3fc4e33fb784
   let pageContainerStyle = {position: "fixed", left: "350px", right: "0px", height: "100%", overflow: "auto"};
   return (
     <div className="App">
       <Router >
-       {isLoggedIn ? <><SideBar userimg={accountInfo.url_userimage}/><Logout setIsLoggedIn={setIsLoggedIn} /></> : <TabSwitcher updateToken={updateToken} setIsLoggedIn={setIsLoggedIn} /> }
+       {isLoggedIn ? <><SideBar userimg={accountInfo.url_userimage}/><Logout setIsLoggedIn={setIsLoggedIn} /></> : <TabSwitcher fetchInfo={fetchAccountInfo} updateToken={updateToken} setIsLoggedIn={setIsLoggedIn} /> }
        <Switch>
           { isLoggedIn ? <Route exact path="/"><MyCharacters /></Route> : <></> }
           <Route exact path="/account">
@@ -64,7 +81,7 @@ function App() {
             <div style={pageContainerStyle}><MyCharacters /></div>
           </Route>
           <Route exact path="/createnewcharacter">
-            <div style={pageContainerStyle}><CreateCharacter /></div>
+            <div style={pageContainerStyle}><CreateCharacter mode={"Edit"}/></div>
           </Route>
           <Route exact path="/about">
             <div style={pageContainerStyle}><About /></div>
