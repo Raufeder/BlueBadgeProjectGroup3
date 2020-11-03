@@ -40,7 +40,7 @@ function App() {
             <div style={pageContainerStyle}><MyCharacters /></div>
           </Route>
           <Route exact path="/createnewcharacter">
-            <div style={pageContainerStyle}><CreateCharacter /></div>
+            <div style={pageContainerStyle}><CreateCharacter mode={"Edit"}/></div>
           </Route>
           <Route exact path="/about">
             <div style={pageContainerStyle}><About /></div>

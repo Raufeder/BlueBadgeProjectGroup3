@@ -1,31 +1,33 @@
 import React, {useState} from "react";
 import { InputGroup, Input, InputGroupAddon, Button, InputGroupText } from "reactstrap";
+import { setGlobalCssModule } from "reactstrap/lib/utils";
 
+import { FaEdit, FaDice, FaSave } from 'react-icons/fa';
 const EditFieldInput = (props) => {
-    
+    const [mode, setMode] = useState(props.inMode);
     return (
         <div style={{color:"black"}}>
             <InputGroup>
-                { props.inMode === "View" ?
+                { mode === "View" ?
                 <InputGroupAddon addonType="prepend">
                     <InputGroupText>{props.ph}</InputGroupText>
                 </InputGroupAddon>
                 : <></>
                 }
                 <Input size="lg" placeholder={props.ph}/>
-                { props.inMode === "View" ?
+                { mode === "View" ?
                 <InputGroupAddon addonType="append">
-                    <Button color="secondary" id="editBtn">Edit</Button>
+                    <Button color="secondary" id="editBtn" onClick={ (e)=> { setMode("Edit") } }><FaEdit /></Button>
                 </InputGroupAddon>
                 :<></>
                 }
-                { props.inMode === "Edit" ?
+                { mode === "Edit" ?
                 <>
                     <InputGroupAddon addonType="append">
-                        <Button color="secondary" id="generateBtn" >Generate</Button>
+                        <Button color="secondary" id="generateBtn" ><FaDice /></Button>
                     </InputGroupAddon>
                     <InputGroupAddon addonType="append">
-                        <Button color="secondary" id="saveBtn" >Save</Button>
+                        <Button color="secondary" id="saveBtn" onClick={ () => { setMode("View"); } }><FaSave /></Button>
                     </InputGroupAddon>
                 </> 
                 : <></>
