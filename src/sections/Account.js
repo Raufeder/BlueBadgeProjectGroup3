@@ -9,6 +9,7 @@ const Account = (props) => {
     const [showPasswordModal, setShowPasswordModal] = useState(false);
     const [accountInfo, setAccountInfo ] = useState(props.accountInfo) 
 
+
     
     return (
 
@@ -17,7 +18,7 @@ const Account = (props) => {
         <div>Account Comp
             <DeleteAccount />
             <UpdateProfileImage  userimg={accountInfo.url_userimage}/>
-            <IndividualUser userimg={accountInfo.url_userimage}/>
+            <IndividualUser userimg={accountInfo.username}/>
             { showPasswordModal ? <ChangePasswordModal /> : <></> }
         </div>
         </div>

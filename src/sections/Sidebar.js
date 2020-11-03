@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {Nav, NavItem, NavLink} from 'reactstrap';
 import logo from '../assets/personarylogo.png'
-import userimg from '../assets/userimg.png'
 import '../styles/sidebar.css'
 import IndividualUser from "../components/IndividualUser";
+import Login from "../auth/Login"
 
 
 const Sidebar = (props) => {

@@ -5,6 +5,7 @@ const Login = (props) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [accountInfo, setAccountInfo] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -24,6 +25,7 @@ const Login = (props) => {
             console.log(data)
             props.updateToken(data.sessionToken);
             props.setIsLoggedIn(true);
+            setAccountInfo(data)
         })
      }
 

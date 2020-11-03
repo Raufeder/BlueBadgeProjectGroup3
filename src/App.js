@@ -20,6 +20,8 @@ import ContactUs from "./sections/ContactUs";
 
 import CreateCharacter from "./sections/CreateCharacter";
 import MyCharacters from "./sections/MyCharacters";
+import Login from "./auth/Login";
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,25 +30,25 @@ function App() {
  const updateToken = (token) => { localStorage.setItem("sessionToken", token); };
 
 
-  const fetchAccountInfo = () => {
-    fetch('http://localhost:8080/user/view', {
-        method: 'POST',
-        body: JSON.stringify( {user: {username: "test", password: "test" }} ),
-        headers: new Headers({
-            "Content-Type": 'application/json'
-            // "Authorization": localStorage.getItem('sessionToken')
-        })
-    }).then((res) => res.json())
-    .then((logData) => {
-        setAccountInfo(logData)
-        console.log(logData)
-    })
-  }
+//   const fetchAccountInfo = () => {
+//     fetch('http://localhost:8080/user/view', {
+//         method: 'POST',
+//         body: JSON.stringify( {user: {username: "test", password: "test" }} ),
+//         headers: new Headers({
+//             "Content-Type": 'application/json'
+//             // "Authorization": localStorage.getItem('sessionToken')
+//         })
+//     }).then((res) => res.json())
+//     .then((logData) => {
+//         setAccountInfo(logData)
+//         console.log(logData)
+//     })
+//   }
 
-useEffect(() => {
-    console.log('got to use effect')
-    fetchAccountInfo();
-}, [])
+// useEffect(() => {
+//     console.log('got to use effect')
+//     fetchAccountInfo();
+// }, [])
 
   let pageContainerStyle = {position: "fixed", left: "350px", right: "0px", height: "100%", overflow: "auto"};
   return (
