@@ -321,7 +321,7 @@ function randomNumberOfChildrenGeneration() {
   let rndAddonsToChildren = "";
 
   // CharChildren... the number of children (nothing about them other than there was a pregnancy)
-  let childrenQtyModifier = ((canBeMarried -1 ) * 0.10 )
+  let childrenQtyModifier = ((ageCohort -1 ) * 0.10 )
 
   // Chance of twins
   let rndChanceOfTwins = Math.floor( Math.random() * 100 );
