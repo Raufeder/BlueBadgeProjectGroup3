@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useState} from "react";
+import React, {useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -23,18 +23,40 @@ import MyCharacters from "./sections/MyCharacters";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [accountInfo, setAccountInfo] = useState({});
 
-  const updateToken = (token) => { localStorage.setItem("sessionToken", token); };
+ const updateToken = (token) => { localStorage.setItem("sessionToken", token); };
+
+
+  const fetchAccountInfo = () => {
+    fetch('http://localhost:8080/user/view', {
+        method: 'POST',
+        body: JSON.stringify( {user: {username: "test", password: "test" }} ),
+        headers: new Headers({
+            "Content-Type": 'application/json'
+            // "Authorization": localStorage.getItem('sessionToken')
+        })
+    }).then((res) => res.json())
+    .then((logData) => {
+        setAccountInfo(logData)
+        console.log(logData)
+    })
+  }
+
+useEffect(() => {
+    console.log('got to use effect')
+    fetchAccountInfo();
+}, [])
 
   let pageContainerStyle = {position: "fixed", left: "350px", right: "0px", height: "100%", overflow: "auto"};
   return (
     <div className="App">
       <Router >
-       {isLoggedIn ? <><SideBar /><Logout setIsLoggedIn={setIsLoggedIn} /></> : <TabSwitcher updateToken={updateToken} setIsLoggedIn={setIsLoggedIn} /> }
+       {isLoggedIn ? <><SideBar userimg={accountInfo.url_userimage}/><Logout setIsLoggedIn={setIsLoggedIn} /></> : <TabSwitcher updateToken={updateToken} setIsLoggedIn={setIsLoggedIn} /> }
        <Switch>
           { isLoggedIn ? <Route exact path="/"><MyCharacters /></Route> : <></> }
           <Route exact path="/account">
-            <div style={pageContainerStyle}><Account /></div>
+            <div style={pageContainerStyle}><Account accountInfo={accountInfo} userimg={accountInfo.url_userimage}/></div>
           </Route>
           <Route exact path="/mycharacters">
             <div style={pageContainerStyle}><MyCharacters /></div>
