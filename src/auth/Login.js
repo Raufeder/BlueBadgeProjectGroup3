@@ -23,18 +23,12 @@ const Login = (props) => {
             (response) => response.json()
         ).then((data) => {
             console.log(data)
-<<<<<<< HEAD
-            props.updateToken(data.sessionToken);
-            props.setIsLoggedIn(true);
-            setAccountInfo(data)
-=======
             if(data.error){ console.log(data.error); }
             else{
                 props.updateToken(data.sessionToken);
                 props.setIsLoggedIn(true);
                 props.fetchInfo();
             }
->>>>>>> a226f351348a8cf6df6c9e5a4c2a3fc4e33fb784
         })
      }
 
