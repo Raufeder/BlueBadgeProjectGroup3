@@ -16,7 +16,7 @@ const Sidebar = (props) => {
             <img className="sidebarLogo" src={logo} alt="personary logo"/>
             </div>
             <div className="sidebarUser">
-            <img className="profilePic" src={userimg} alt="user profile image"/>
+            <img className="profilePic" src={props.userimg} alt="user profile image"/>
             <h2>Welcome back!</h2>
             <IndividualUser />
             </div>
