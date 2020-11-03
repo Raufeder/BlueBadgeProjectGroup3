@@ -1,10 +1,11 @@
-import React from "react";
+// import React from "react";
+// import { Button, Form} from "reactstrap";
 
-const ChangePasswordModal = (props) => {
+// // const ChangePasswordModal = (props) => {
 
-    return (
-        <div>ChangePasswordModal Comp</div>
-    );
-};
+// //     return (
+// //         <div>ChangePasswordModal Comp</div>
+// //     );
+// // };
 
-export default ChangePasswordModal;
+// // export default ChangePasswordModal;
