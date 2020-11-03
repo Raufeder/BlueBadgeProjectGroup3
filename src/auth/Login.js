@@ -25,7 +25,7 @@ const Login = (props) => {
             if(data.error){ console.log(data.error); }
             else{
                 props.updateToken(data.sessionToken);
-                props.fetchInfo();
+                props.fetchInfo(data.user.username);
             }
         })
      }

@@ -28,8 +28,8 @@ function App() {
  const updateToken = (token) => { localStorage.setItem("sessionToken", token); };
 
 
-  const fetchAccountInfo = () => {
-    fetch('http://localhost:8080/user/view', {
+  const fetchAccountInfo = (userName) => {
+    fetch(`http://localhost:8080/user/view/${userName}`, {
         method: 'GET',
         headers: new Headers({
             "Content-Type": 'application/json',
