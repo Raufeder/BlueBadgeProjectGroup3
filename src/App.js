@@ -30,11 +30,10 @@ function App() {
 
   const fetchAccountInfo = () => {
     fetch('http://localhost:8080/user/view', {
-        method: 'POST',
-        body: JSON.stringify( {user: {username: "test", password: "test" }} ),
+        method: 'GET',
         headers: new Headers({
-            "Content-Type": 'application/json'
-            // "Authorization": localStorage.getItem('sessionToken')
+            "Content-Type": 'application/json',
+            "authorization": "Bearer " + localStorage.getItem('sessionToken')
         })
     }).then((res) => res.json())
     .then((logData) => {
@@ -43,16 +42,11 @@ function App() {
     })
   }
 
-useEffect(() => {
-    console.log('got to use effect')
-    fetchAccountInfo();
-}, [])
-
   let pageContainerStyle = {position: "fixed", left: "350px", right: "0px", height: "100%", overflow: "auto"};
   return (
     <div className="App">
       <Router >
-       {isLoggedIn ? <><SideBar userimg={accountInfo.url_userimage}/><Logout setIsLoggedIn={setIsLoggedIn} /></> : <TabSwitcher updateToken={updateToken} setIsLoggedIn={setIsLoggedIn} /> }
+       {isLoggedIn ? <><SideBar userimg={accountInfo.url_userimage}/><Logout setIsLoggedIn={setIsLoggedIn} /></> : <TabSwitcher fetchInfo={fetchAccountInfo} updateToken={updateToken} setIsLoggedIn={setIsLoggedIn} /> }
        <Switch>
           { isLoggedIn ? <Route exact path="/"><MyCharacters /></Route> : <></> }
           <Route exact path="/account">

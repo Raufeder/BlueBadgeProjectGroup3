@@ -22,8 +22,12 @@ const Login = (props) => {
             (response) => response.json()
         ).then((data) => {
             console.log(data)
-            props.updateToken(data.sessionToken);
-            props.setIsLoggedIn(true);
+            if(data.error){ console.log(data.error); }
+            else{
+                props.updateToken(data.sessionToken);
+                props.setIsLoggedIn(true);
+                props.fetchInfo();
+            }
         })
      }
 

@@ -9,13 +9,15 @@ const MyCharacters = (props) => {
 
     useEffect(() => {
         fetch("http://localhost:8080/character/", {
-            headers: {
-                Authorization: props.token
-            },
+            method: "GET",
+            headers: new Headers({
+                authorization: "Bearer " + localStorage.getItem("sessionToken")
+            }),
         })
         .then(response => response.json())
         .then(body => {
-            setCharacterList(body.results);
+            //setCharacterList(body.results);
+            console.log(body);
         })
         .catch((error) => console.log(error));
     }, [])
