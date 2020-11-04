@@ -6,9 +6,8 @@ const About = (props) => {
     return (
         <div className="about">
             <h2> -  Our Mission  -</h2>
-            <h4>To provide you with a personality.</h4>
-            <br/>
-
+            <h4 className="subTitle">To provide you with a personality.</h4>
+           
             <h3>About</h3>
 
             <p>There are many reasons you might need a new personality.  You need a 'customer persona' to represent your business' ideal customer and don't know where to start.  Pardue, your Holy Man, has gone mad and you need a new character.  Or... you just don't have a personality.  Fear not... that is why we created Personary.</p>
