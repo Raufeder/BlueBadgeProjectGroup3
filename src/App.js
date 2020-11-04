@@ -75,10 +75,10 @@ function App() {
           <Route exact path="/mycharacters">
             <div style={pageContainerStyle}><MyCharacters fetchCharacters={fetchCharacters} characterList={characterList} /></div>
           </Route>
-          <Route exact path="/createnewcharacter">
+          <Route exact path="/createnewcharacter" key="createRoute" >
             <div style={pageContainerStyle}><CreateCharacter mode={"Create"}/></div>
           </Route>
-          <Route path="/viewcharacter/:id">
+          <Route path="/viewcharacter/:id" key="viewRoute">
             <div style={pageContainerStyle}><CreateCharacter mode={"View"} characterList={characterList} /></div>
           </Route>
           <Route exact path="/about">

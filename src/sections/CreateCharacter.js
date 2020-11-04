@@ -15,26 +15,9 @@ const CreateCharacter = (props) => {
     const [saveTooltip, setSaveTooltipOpen] = useState(false);
     const [charData, setCharData] = useState(null);
 
-    let charModel = {
-        charName: "",
-        charImageURL: "",
-        charBodyType: "",
-        charHair: "",
-        charEyeColor: "",
-    };
-
     let {id} = useParams();
     const getCharData = () => {
-        console.log("id: ", id);
-        console.log(props.characterList);
         let char = (props.characterList.filter( (character) => { return character.id == id; } ))[0];
-        console.log(char);
-        delete char.id;
-        delete char.owner_id;
-        delete char.createdBy;
-        delete char.userId;
-        delete char.createdAt;
-        delete char.updatedAt;
         return char;
     }
 
@@ -44,7 +27,26 @@ const CreateCharacter = (props) => {
 
         switch(props.mode) {
             case "Create":
-                //run generators for all the fields
+                //TODO: run generators for all the fields
+                let charModel = {
+                    charName: "",
+                    charImageURL: "",
+                    charBodyType: "",
+                    charHair: "",
+                    charEyeColor: "",
+                    charGender: "",
+                    charAge: "",
+                    charRelationshipStatus: "",
+                    charChildren: "",
+                    charOccupation: "",
+                    charDescription: "",
+                    charHistory: "",
+                    charPersonalityType: "",
+                    charPersonalityPolarOpp: "",
+                    charPersonalityDescription: "",
+                    charPersonalityQuirk: ""
+                };
+                setCharData(charModel);
                 break;
             default:
                 break;
@@ -52,7 +54,7 @@ const CreateCharacter = (props) => {
     }, [])
 
     function createJSONData(elementArr){
-        let keys = Object.keys(charModel);
+        let keys = Object.keys(charData);
         let tObj = { Character: {} };
         for(let i = 0; i < keys.length; i++){
             tObj.Character[keys[i]] = elementArr[i].value;
@@ -82,45 +84,57 @@ const CreateCharacter = (props) => {
         <h1 class="characterHeader" >{mode} Character</h1>
         <div class="centerDiv">
             <div class="characterBody" >
-                <div class="characterTopContainer" >
-                    <div class="leftOfPicText" >
-                        <Form onSubmit={ (e) => { createCharacter(e) } }>
+                <Form onSubmit={ (e) => { createCharacter(e) } }>
+                    <div class="characterTopContainer" >
+                        <div class="leftOfPicText" >
+                            <Container fluid={true}><Row >
+                                    { charData ? 
+                                        Object.keys(charData).map( (oneKey, i) => {
+                                            return (
+                                            i < 7 ? 
+                                            <Col md="12" lg="12" xl="12">
+                                                <EditFieldInput value={charData[oneKey]} ph={oneKey} inMode={mode} />
+                                            </Col> : <></>
+                                            )
+                                        })
+                                        : <></>
+                                    }
+                            </Row></Container>
+                        </div>
+                        <div class="picContainer" >
+                            <IndividualCharacter charImg={charImg} alt="Character Image" />
+                        </div>
+                    </div>
+                    <div class="underPicText">
                         <Container fluid={true}><Row >
-                                { charData ? 
-                                    Object.keys(charData).map( (oneKey, i) => {
-                                        return (
-                                        <Col md="12" lg="12" xl="12">
-                                            <EditFieldInput value={charData[oneKey]} ph={oneKey} inMode={mode} />
-                                        </Col>
-                                        )
-                                    })
-                                    : <></>
-                                }
+                        { charData ? 
+                            Object.keys(charData).map( (oneKey, i) => {
+                                return (
+                                i >= 7 ?
+                                <Col md="12" lg="12" xl="12">
+                                    <EditFieldInput value={charData[oneKey]} ph={oneKey} inMode={mode} />
+                                </Col> : <></>
+                                )
+                            })
+                            : <></>
+                        }
                         </Row></Container>
-                        <Button type="submit" size="lg" color="success">Create Character</Button>
-                        </Form>
+                        { mode === "View" && charData ?
+                        <Tooltip placement="top" isOpen={editTooltip} target="editBtn" toggle={() => { setEditTooltipOpen(!editTooltip) }}>
+                            Edit Field
+                        </Tooltip> : <></>
+                        }
+                        { mode === "Edit" ?
+                        <><Tooltip placement="top" isOpen={generateTooltip} target="generateBtn" toggle={() => { setGenerateTooltipOpen(!generateTooltip) }}>
+                            Generate Field
+                        </Tooltip>
+                        <Tooltip placement="top" isOpen={saveTooltip} target="saveBtn" toggle={() => { setSaveTooltipOpen(!saveTooltip) }}>
+                            Save Field
+                        </Tooltip></> : <></>
+                        }
                     </div>
-                    <div class="picContainer" >
-                        <IndividualCharacter charImg={charImg} alt="Character Image" />
-                    </div>
-                </div>
-                <div class="underPicText">
-                    <Container fluid={true}><Row >
-                    </Row></Container>
-                    { mode === "View" && charData ?
-                    <Tooltip placement="top" isOpen={editTooltip} target="editBtn" toggle={() => { setEditTooltipOpen(!editTooltip) }}>
-                        Edit Field
-                    </Tooltip> : <></>
-                    }
-                    { mode === "Edit" ?
-                    <><Tooltip placement="top" isOpen={generateTooltip} target="generateBtn" toggle={() => { setGenerateTooltipOpen(!generateTooltip) }}>
-                        Generate Field
-                    </Tooltip>
-                    <Tooltip placement="top" isOpen={saveTooltip} target="saveBtn" toggle={() => { setSaveTooltipOpen(!saveTooltip) }}>
-                        Save Field
-                    </Tooltip></> : <></>
-                    }
-                </div>
+                    { mode === "Create" ? <Button type="submit" size="lg" color="success">Create Character</Button> : <></>}
+                </Form>
             </div>
         </div>
         </>
