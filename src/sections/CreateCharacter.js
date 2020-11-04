@@ -1,6 +1,6 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import "../styles/createCharacter.css"
-import {useParams} from "react-router-dom";
+import {useParams, useHistory} from "react-router-dom";
 import APIURL from "../helpers/environment";
 
 import EditFieldInput from "../components/EditFieldInput";
@@ -17,11 +17,36 @@ const CreateCharacter = (props) => {
     const [generateTooltip, setGenerateTooltipOpen] = useState(false);
     const [saveTooltip, setSaveTooltipOpen] = useState(false);
     const [charData, setCharData] = useState(null);
-
     let {id} = useParams();
+    const [charId, setCharId] = useState(id);
+    const history = useHistory();
+    const navigateHome = useCallback(() => { history.push('/') }, [history]);
+    
     const getCharData = () => {
-        let char = (props.characterList.filter( (character) => { return character.id == id; } ))[0];
-        return char;
+        let char = (props.characterList.filter( (character) => { return character.id == charId; } ))[0];
+        console.log("View Character Loaded Object: ");
+        console.log(char);
+
+        let charModel = {
+            charName: char["CharName"],
+            charImageURL: char["CharImageURL"],
+            charBodyType: char["CharBodyType"],
+            charHair: char["CharHair"],
+            charEyeColor: char["CharEyeColor"],
+            charGender: char["CharGender"],
+            charAge: char["CharAge"],
+            charRelationshipStatus: char["CharRelationshipStatus"],
+            charChildren: char["CharChildren"],
+            charOccupation: char["CharOccupation"],
+            charDescription: char["CharDescription"],
+            charHistory: char["CharHistory"],
+            charPersonalityType: char["CharPersonalityType"],
+            charPersonalityPolarOpp: char["CharPersonalityPolarOpp"],
+            charPersonalityDescription: char["CharPersonalityDescription"],
+            charPersonalityQuirk: char["CharPersonalityQuirk"],
+        };
+
+        return charModel;
     }
 
     useEffect( () => {
@@ -49,6 +74,7 @@ const CreateCharacter = (props) => {
                     charPersonalityDescription: exportObject.getRandomPersonalityDescription(),
                     charPersonalityQuirk: exportObject.getRandomPersonalityQuirk(),
                 };
+
                 setCharData(charModel);
                 break;
             default:
@@ -57,10 +83,15 @@ const CreateCharacter = (props) => {
     }, [])
 
     function createJSONData(elementArr){
+        console.log("Create Char Data: ");
         let keys = Object.keys(charData);
+        console.log(keys);
+        console.log("Element Array: ");
+        console.log(elementArr);
         let tObj = { Character: {} };
         for(let i = 0; i < keys.length; i++){
             tObj.Character[keys[i]] = elementArr[i].value;
+            console.log( i + " " + keys[i] + " = " + elementArr[i].value);
         }
         return tObj;
     }
@@ -78,8 +109,110 @@ const CreateCharacter = (props) => {
             })
         }).then( (res) => { return res.json(); } )
         .then( (data) => {
-            console.log(data);
+            //console.log(data);
         })
+    };
+
+    const onSaveInput = (e) => {
+        console.log("OnSaveInput: ");
+        console.log(charData);
+        fetch(`${APIURL}character/edit/${charId}`, {
+            method: "PUT",
+            body: JSON.stringify( { Character: charData } ),
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "authorization": "Bearer " + localStorage.getItem("sessionToken")
+            })
+        }).then( (res) => { return res.json(); } )
+        .then( (data) => {
+            //console.log(data);
+        })
+    };
+
+    const onChangeInput = (e) => {
+        console.log(e);
+        let charModel = {
+            charName: charData["charName"],
+            charImageURL: charData["charImageURL"],
+            charBodyType: charData["charBodyType"],
+            charHair: charData["charHair"],
+            charEyeColor: charData["charEyeColor"],
+            charGender: charData["charGender"],
+            charAge: charData["charAge"],
+            charRelationshipStatus: charData["charRelationshipStatus"],
+            charChildren: charData["charChildren"],
+            charOccupation: charData["charOccupation"],
+            charDescription: charData["charDescription"],
+            charHistory: charData["charHistory"],
+            charPersonalityType: charData["charPersonalityType"],
+            charPersonalityPolarOpp: charData["charPersonalityPolarOpp"],
+            charPersonalityDescription: charData["charPersonalityDescription"],
+            charPersonalityQuirk: charData["charPersonalityQuirk"],
+        };
+        
+        charModel[e.target.placeholder] = e.target.value;
+
+        setCharData(charModel);
+    };
+
+    const deleteCharacter = (e) => {
+        fetch(`${APIURL}character/delete/${charId}`, {
+            method: "DELETE",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "authorization": "Bearer " + localStorage.getItem("sessionToken")
+            })
+        }).then( (res) => { 
+            console.log(res);  
+            navigateHome();
+        })
+    }
+
+    const getGeneratorFunc = (key) => {
+        let charModel = {
+            charName: exportObject.getRandomName,
+            charImageURL: null,
+            charBodyType: exportObject.getRandomBodyType,
+            charHair: exportObject.getRandomHairColor,
+            charEyeColor: exportObject.getRandomEyeColor,
+            charGender: null,
+            charAge: exportObject.getRandomAge,
+            charRelationshipStatus: exportObject.getRandomRelationshipStatus,
+            charChildren: exportObject.getRandomNumberOfChildren,
+            charOccupation: null,
+            charDescription: null,
+            charHistory: null,
+            charPersonalityType: exportObject.getRandomPersonalityType,
+            charPersonalityPolarOpp: exportObject.randomPersonalityPolarOpposite,
+            charPersonalityDescription: exportObject.getRandomPersonalityDescription,
+            charPersonalityQuirk: exportObject.getRandomPersonalityQuirk,
+        };
+        return charModel[key];
+    };
+
+    const generatorClick = (key) => {
+        let charModel = {
+            charName: charData["charName"],
+            charImageURL: charData["charImageURL"],
+            charBodyType: charData["charBodyType"],
+            charHair: charData["charHair"],
+            charEyeColor: charData["charEyeColor"],
+            charGender: charData["charGender"],
+            charAge: charData["charAge"],
+            charRelationshipStatus: charData["charRelationshipStatus"],
+            charChildren: charData["charChildren"],
+            charOccupation: charData["charOccupation"],
+            charDescription: charData["charDescription"],
+            charHistory: charData["charHistory"],
+            charPersonalityType: charData["charPersonalityType"],
+            charPersonalityPolarOpp: charData["charPersonalityPolarOpp"],
+            charPersonalityDescription: charData["charPersonalityDescription"],
+            charPersonalityQuirk: charData["charPersonalityQuirk"],
+        };
+        
+        charModel[key] = getGeneratorFunc(key)();
+
+        setCharData(charModel);
     };
 
     return (
@@ -96,15 +229,16 @@ const CreateCharacter = (props) => {
                                             return (
                                             i < 7 ? 
                                             <Col md="12" lg="12" xl="12">
-                                                <EditFieldInput value={charData[oneKey]} ph={oneKey} inMode={mode} />
+                                                <EditFieldInput genFunc={ generatorClick } changeFunc={onChangeInput} saveFunc={onSaveInput} value={charData[oneKey]} ph={oneKey} inMode={mode} />
                                             </Col> : <></>
-                                            )
+                                            );
                                         })
                                         : <></>
                                     }
                             </Row></Container>
                         </div>
                         <div class="picContainer" >
+                            <Button onClick={deleteCharacter} color="danger" >Delete Character</Button>
                             <IndividualCharacter charImg={charImg} alt="Character Image" />
                         </div>
                     </div>
@@ -115,7 +249,7 @@ const CreateCharacter = (props) => {
                                 return (
                                 i >= 7 ?
                                 <Col md="12" lg="12" xl="12">
-                                    <EditFieldInput value={charData[oneKey]} ph={oneKey} inMode={mode} />
+                                    <EditFieldInput genFunc={ generatorClick } changeFunc={onChangeInput} saveFunc={onSaveInput} value={charData[oneKey]} ph={oneKey} inMode={mode} />
                                 </Col> : <></>
                                 )
                             })
