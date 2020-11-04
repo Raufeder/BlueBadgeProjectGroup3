@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, Form, FormGroup } from 'reactstrap';
+import APIURL from "../helpers/environment";
+
 import '../styles/ChangePassword.css';
 
     const ChangePasswordModal = (props) => {
@@ -31,7 +33,7 @@ const handleSubmit = (event) => {
 
     if (oldPassword && newPassword) {
         if(newPassword === newPasswordConfirm) {
-            fetch('http://localhost:8080/user/changepassword', {
+            fetch(`${APIURL}user/changepassword`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json"
