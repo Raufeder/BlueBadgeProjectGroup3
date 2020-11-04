@@ -15,8 +15,7 @@ const Account = (props) => {
     return (
     <div>
         
-        <div className="profilePicture"><UpdateProfileImage  userimg={accountInfo.url_userimage}/><br/>
-        <UpdateProfileImage /></div>
+        <div className="profilePicture"><UpdateProfileImage  userimg={accountInfo.url_userimage}/><br/></div>
             <div className="mainAcctDiv">
             <div className="accountHeader">My Account</div>
             <div className="userName">{accountInfo.username}</div>
