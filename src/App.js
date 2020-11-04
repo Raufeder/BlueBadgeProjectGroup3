@@ -62,7 +62,7 @@ function App() {
   return (
     <div className="App">
       <Router >
-       {isLoggedIn ? <><SideBar userimg={accountInfo.url_userimage}/><Logout setIsLoggedIn={setIsLoggedIn} /></> : <TabSwitcher fetchInfo={fetchAccountInfo} updateToken={updateToken} setIsLoggedIn={setIsLoggedIn} /> }
+       {isLoggedIn ? <><SideBar accountInfo={accountInfo} userimg={accountInfo.url_userimage}/><Logout setIsLoggedIn={setIsLoggedIn} /></> : <TabSwitcher fetchInfo={fetchAccountInfo} updateToken={updateToken} setIsLoggedIn={setIsLoggedIn} /> }
        <Switch>
           { isLoggedIn ? 
             <Route exact path="/">

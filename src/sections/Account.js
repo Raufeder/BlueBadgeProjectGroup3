@@ -3,24 +3,32 @@ import DeleteAccount from "../components/DeleteAccount";
 import UpdateProfileImage from "../components/UpdateProfileImage";
 import IndividualUser from "../components/IndividualUser";
 import ChangePasswordModal from "../components/ChangePasswordModal";
+import '../styles/Account.css';
 
 const Account = (props) => {
 
-    const [showPasswordModal, setShowPasswordModal] = useState(false);
+    const [showPasswordModal, setShowPasswordModal] = useState(true);
     const [accountInfo, setAccountInfo ] = useState(props.accountInfo) 
+
 
     
     return (
 
     <div>
-         <p>{accountInfo.username ? accountInfo.username : ''}</p>
-        <div>Account Comp
-            <DeleteAccount />
-            <UpdateProfileImage  userimg={accountInfo.url_userimage}/>
-            <IndividualUser userimg={accountInfo.url_userimage}/>
-            { showPasswordModal ? <ChangePasswordModal /> : <></> }
+        
+        <div className="profilePicture"><UpdateProfileImage  userimg={accountInfo.url_userimage}/><br/>
+        <UpdateProfileImage /></div>
+            <div className="mainAcctDiv">
+            <div className="accountHeader">My Account</div>
+            <div className="userName">{accountInfo.username}</div>
+            <div className="password">Password:   ****************</div>
+            <div className="changePassword">{ showPasswordModal ? <ChangePasswordModal /> : <></> }</div>
+            <div className="dateJoined">Date Joined: {accountInfo.createdAt}</div>
+            <div className="deleteAcct"><DeleteAccount /></div>
         </div>
         </div>
+        
+    
     )
 };
 export default Account;
