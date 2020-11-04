@@ -8,6 +8,8 @@ import Login from "../auth/Login"
 
 
 const Sidebar = (props) => {
+    
+
 
     return (
         <div className="mainSidebar">
@@ -17,7 +19,7 @@ const Sidebar = (props) => {
             </div>
             <div className="sidebarUser">
             <img className="profilePic" src={props.userimg} alt="user profile image"/>
-            <h2>Welcome back!</h2>
+            <h2>Welcome back, {props.accountInfo.username}!</h2>
             <IndividualUser />
             </div>
             <div>

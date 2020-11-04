@@ -20,8 +20,6 @@ import ContactUs from "./sections/ContactUs";
 
 import CreateCharacter from "./sections/CreateCharacter";
 import MyCharacters from "./sections/MyCharacters";
-import Login from "./auth/Login";
-
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,19 +28,12 @@ function App() {
  const updateToken = (token) => { localStorage.setItem("sessionToken", token); };
 
 
-<<<<<<< HEAD
-  const fetchAccountInfo = () => {
-    fetch('http://localhost:8080/user/view', {
-        method: 'POST',
-        body: JSON.stringify( {user: {username: "test", password: "test" }} ),
-=======
   const fetchAccountInfo = (userName) => {
     fetch(`http://localhost:8080/user/view/${userName}`, {
         method: 'GET',
->>>>>>> de234515c2f86b328b26d2e573eac5208d07c590
         headers: new Headers({
-            "Content-Type": 'application/json'
-            // "Authorization": localStorage.getItem('sessionToken')
+            "Content-Type": 'application/json',
+            "authorization": "Bearer " + localStorage.getItem('sessionToken')
         })
     }).then((res) => res.json())
     .then((logData) => {
@@ -52,16 +43,11 @@ function App() {
     })
   }
 
-useEffect(() => {
-    console.log('got to use effect')
-    fetchAccountInfo();
-}, [])
-
   let pageContainerStyle = {position: "fixed", left: "350px", right: "0px", height: "100%", overflow: "auto"};
   return (
     <div className="App">
       <Router >
-       {isLoggedIn ? <><SideBar userimg={accountInfo.url_userimage}/><Logout setIsLoggedIn={setIsLoggedIn} /></> : <TabSwitcher updateToken={updateToken} setIsLoggedIn={setIsLoggedIn} /> }
+       {isLoggedIn ? <><SideBar accountInfo={accountInfo} userimg={accountInfo.url_userimage}/><Logout setIsLoggedIn={setIsLoggedIn} /></> : <TabSwitcher fetchInfo={fetchAccountInfo} updateToken={updateToken} setIsLoggedIn={setIsLoggedIn} /> }
        <Switch>
           { isLoggedIn ? <Route exact path="/"><MyCharacters /></Route> : <></> }
           <Route exact path="/account">
@@ -71,7 +57,7 @@ useEffect(() => {
             <div style={pageContainerStyle}><MyCharacters /></div>
           </Route>
           <Route exact path="/createnewcharacter">
-            <div style={pageContainerStyle}><CreateCharacter /></div>
+            <div style={pageContainerStyle}><CreateCharacter mode={"Edit"}/></div>
           </Route>
           <Route exact path="/about">
             <div style={pageContainerStyle}><About /></div>
