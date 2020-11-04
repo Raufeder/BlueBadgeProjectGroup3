@@ -89,8 +89,10 @@ const CreateCharacter = (props) => {
         console.log("Element Array: ");
         console.log(elementArr);
         let tObj = { Character: {} };
+        let charKeyMod = 0;
         for(let i = 0; i < keys.length; i++){
-            tObj.Character[keys[i]] = elementArr[i].value;
+            if( elementArr[i].type === "text" ){ tObj.Character[keys[i - charKeyMod]] = elementArr[i].value; }
+            else{ charKeyMod++; } // this is to skip all form elements that aren't text
             console.log( i + " " + keys[i] + " = " + elementArr[i].value);
         }
         return tObj;
@@ -214,7 +216,18 @@ const CreateCharacter = (props) => {
 
         setCharData(charModel);
     };
-
+    
+    const splitData = () => {
+        let parts = [{},{}];
+        if(charData != null){
+            Object.keys(charData).map( (k, i) => {
+                if(i < 7) { parts[0][k] = charData[k]; }
+                else{ parts[1][k] = charData[k]; }
+            });
+        }
+        return parts;
+    };
+    
     return (
         <>
         <h1 class="characterHeader" >{mode} Character</h1>
@@ -225,12 +238,11 @@ const CreateCharacter = (props) => {
                         <div class="leftOfPicText" >
                             <Container fluid={true}><Row >
                                     { charData ? 
-                                        Object.keys(charData).map( (oneKey, i) => {
+                                        Object.keys(splitData()[0]).map( (oneKey, i) => {
                                             return (
-                                            i < 7 ? 
                                             <Col md="12" lg="12" xl="12">
                                                 <EditFieldInput genFunc={ generatorClick } changeFunc={onChangeInput} saveFunc={onSaveInput} value={charData[oneKey]} ph={oneKey} inMode={mode} />
-                                            </Col> : <></>
+                                            </Col>
                                             );
                                         })
                                         : <></>
@@ -245,12 +257,11 @@ const CreateCharacter = (props) => {
                     <div class="underPicText">
                         <Container fluid={true}><Row >
                         { charData ? 
-                            Object.keys(charData).map( (oneKey, i) => {
+                            Object.keys(splitData()[1]).map( (oneKey, i) => {
                                 return (
-                                i >= 7 ?
                                 <Col md="12" lg="12" xl="12">
                                     <EditFieldInput genFunc={ generatorClick } changeFunc={onChangeInput} saveFunc={onSaveInput} value={charData[oneKey]} ph={oneKey} inMode={mode} />
-                                </Col> : <></>
+                                </Col>
                                 )
                             })
                             : <></>

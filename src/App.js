@@ -77,7 +77,7 @@ function App() {
             </Route> : <></> 
           }
           <Route exact path="/account">
-            <div style={pageContainerStyle}><Account accountInfo={accountInfo} userimg={accountInfo.url_userimage}/></div>
+            <div style={pageContainerStyle}><Account setIsLoggedIn={setIsLoggedIn} accountInfo={accountInfo} userimg={accountInfo.url_userimage}/></div>
           </Route>
           <Route exact path="/mycharacters">
             <div style={pageContainerStyle}><MyCharacters fetchCharacters={fetchCharacters} characterList={characterList} /></div>

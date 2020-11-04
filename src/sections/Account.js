@@ -9,7 +9,7 @@ const Account = (props) => {
 
     const [showPasswordModal, setShowPasswordModal] = useState(true);
     const [accountInfo, setAccountInfo ] = useState(props.accountInfo) 
-
+    console.log(accountInfo);
 
     
     return (
@@ -20,9 +20,9 @@ const Account = (props) => {
                 <div className="accountHeader">- My Account -</div>
                 <div className="userName">{accountInfo.username}</div>
                 <div className="password">Password:   ****************</div>
-                <div className="changePassword">{ showPasswordModal ? <ChangePasswordModal /> : <></> }</div>
+                <div className="changePassword">{ showPasswordModal ? <ChangePasswordModal username={accountInfo.username} /> : <></> }</div>
                 <div className="dateJoined">Date Joined: {accountInfo.createdAt.substr(0,10)}</div>
-                <div className="deleteAcct"><DeleteAccount /></div>
+                <div className="deleteAcct"><DeleteAccount setIsLoggedIn={props.setIsLoggedIn} /></div>
             </div>
 
         </div> 
