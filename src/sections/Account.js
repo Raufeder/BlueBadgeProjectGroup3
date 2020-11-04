@@ -21,7 +21,7 @@ const Account = (props) => {
                 <div className="userName">{accountInfo.username}</div>
                 <div className="password">Password:   ****************</div>
                 <div className="changePassword">{ showPasswordModal ? <ChangePasswordModal /> : <></> }</div>
-                <div className="dateJoined">Date Joined: {accountInfo.createdAt}</div>
+                <div className="dateJoined">Date Joined: {accountInfo.createdAt.substr(0,10)}</div>
                 <div className="deleteAcct"><DeleteAccount /></div>
             </div>
 
