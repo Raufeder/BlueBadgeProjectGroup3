@@ -44,7 +44,7 @@ function App() {
   }
 
   const fetchAccountInfo = (userName) => {
-    fetch(`${APIURL}/user/view/${userName}`, {
+    fetch(`${APIURL}user/view/${userName}`, {
         method: 'GET',
         headers: new Headers({
             "Content-Type": 'application/json',
