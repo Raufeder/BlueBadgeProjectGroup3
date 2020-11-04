@@ -14,7 +14,7 @@ const EditFieldInput = (props) => {
                 </InputGroupAddon>
                 : <></>
                 }
-                <Input size="lg" placeholder={props.ph}/>
+                <Input size="lg" placeholder={props.ph} value={props.value} />
                 { mode === "View" ?
                 <InputGroupAddon addonType="append">
                     <Button color="secondary" id="editBtn" onClick={ (e)=> { setMode("Edit") } }><FaEdit /></Button>
