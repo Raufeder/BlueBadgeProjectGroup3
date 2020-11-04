@@ -482,7 +482,7 @@ function randomNameGeneration() {
   let chosenLowest100SurnamesInUS = lowest100SurnamesInUS[rndDieRoll(lowest100SurnamesInUS.length)];
 
 
-  let surnamesTupleList = [ [chosenTop100SurnamesInUS, 0.5], [chosenMiddle100SurnamesInUS, 0.3], [lowest100SurnamesInUS, 0.2] ];
+  let surnamesTupleList = [ [chosenTop100SurnamesInUS, 0.5], [chosenMiddle100SurnamesInUS, 0.3], [chosenLowest100SurnamesInUS, 0.2] ];
   let rndSurname = getRandomValueFromTuples(surnamesTupleList);
 
 
@@ -562,16 +562,18 @@ function getRandomPersonalityQuirk() {
 };
 
 
-let exportObject = {getRandomAge: getRandomAge,
-getRandomHairColor: getRandomHairColor,
-getRandomName: getRandomName,
-getRandomRelationshipStatus: getRandomRelationshipStatus,
-getRandomNumberOfChildren: getRandomNumberOfChildren,
-getRandomBodyType: getRandomBodyType,
-getRandomEyeColor: getRandomEyeColor,
-getRandomPersonalityType: getRandomPersonalityType,
-randomPersonalityPolarOpposite: randomPersonalityPolarOpposite,
-getRandomPersonalityDescription: getRandomPersonalityDescription,
-getRandomPersonalityQuirk: getRandomPersonalityQuirk};
+let exportObject = {
+  getRandomAge: getRandomAge,
+  getRandomHairColor: getRandomHairColor,
+  getRandomName: getRandomName,
+  getRandomRelationshipStatus: getRandomRelationshipStatus,
+  getRandomNumberOfChildren: getRandomNumberOfChildren,
+  getRandomBodyType: getRandomBodyType,
+  getRandomEyeColor: getRandomEyeColor,
+  getRandomPersonalityType: getRandomPersonalityType,
+  randomPersonalityPolarOpposite: randomPersonalityPolarOpposite,
+  getRandomPersonalityDescription: getRandomPersonalityDescription,
+  getRandomPersonalityQuirk: getRandomPersonalityQuirk
+};
 
 export default exportObject;
