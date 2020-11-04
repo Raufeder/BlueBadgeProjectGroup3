@@ -7,7 +7,7 @@ import '../styles/Account.css';
 
 const Account = (props) => {
 
-    const [showPasswordModal, setShowPasswordModal] = useState(false);
+    const [showPasswordModal, setShowPasswordModal] = useState(true);
     const [accountInfo, setAccountInfo ] = useState(props.accountInfo) 
 
 
