@@ -24,9 +24,24 @@ import MyCharacters from "./sections/MyCharacters";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [accountInfo, setAccountInfo] = useState({});
+  const [characterList, setCharacterList] = useState(null);
 
  const updateToken = (token) => { localStorage.setItem("sessionToken", token); };
 
+  const fetchCharacters = () => {
+    fetch("http://localhost:8080/character/", {
+            method: "GET",
+            headers: new Headers({
+                authorization: "Bearer " + localStorage.getItem("sessionToken")
+            }),
+        })
+        .then(response => response.json())
+        .then(body => {
+            setCharacterList(body.results);
+            setIsLoggedIn(true)
+        })
+        .catch((error) => console.log(error));
+  }
 
   const fetchAccountInfo = (userName) => {
     fetch(`http://localhost:8080/user/view/${userName}`, {
@@ -38,7 +53,7 @@ function App() {
     }).then((res) => res.json())
     .then((logData) => {
         setAccountInfo(logData)
-        setIsLoggedIn(true)
+        fetchCharacters();
         console.log("accountInfoLogged " + logData)
     })
   }
@@ -47,17 +62,24 @@ function App() {
   return (
     <div className="App">
       <Router >
-       {isLoggedIn ? <><SideBar userimg={accountInfo.url_userimage}/><Logout setIsLoggedIn={setIsLoggedIn} /></> : <TabSwitcher fetchInfo={fetchAccountInfo} updateToken={updateToken} setIsLoggedIn={setIsLoggedIn} /> }
+       {isLoggedIn ? <><SideBar accountInfo={accountInfo} userimg={accountInfo.url_userimage}/><Logout setIsLoggedIn={setIsLoggedIn} /></> : <TabSwitcher fetchInfo={fetchAccountInfo} updateToken={updateToken} setIsLoggedIn={setIsLoggedIn} /> }
        <Switch>
-          { isLoggedIn ? <Route exact path="/"><MyCharacters /></Route> : <></> }
+          { isLoggedIn ? 
+            <Route exact path="/">
+              <div style={pageContainerStyle}><MyCharacters fetchCharacters={fetchCharacters} characterList={characterList} /></div>
+            </Route> : <></> 
+          }
           <Route exact path="/account">
             <div style={pageContainerStyle}><Account accountInfo={accountInfo} userimg={accountInfo.url_userimage}/></div>
           </Route>
           <Route exact path="/mycharacters">
-            <div style={pageContainerStyle}><MyCharacters /></div>
+            <div style={pageContainerStyle}><MyCharacters fetchCharacters={fetchCharacters} characterList={characterList} /></div>
           </Route>
           <Route exact path="/createnewcharacter">
-            <div style={pageContainerStyle}><CreateCharacter mode={"Edit"}/></div>
+            <div style={pageContainerStyle}><CreateCharacter mode={"Create"}/></div>
+          </Route>
+          <Route path="/viewcharacter/:id">
+            <div style={pageContainerStyle}><CreateCharacter mode={"View"} characterList={characterList} /></div>
           </Route>
           <Route exact path="/about">
             <div style={pageContainerStyle}><About /></div>
