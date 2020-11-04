@@ -5,7 +5,7 @@ const PrivacyPolicy = (props) => {
 
     return (
         <div className="privacyPolicy">
-            <h3 className="title">Privacy Policy of https://heroku.oursite.org</h3>
+            <h3 className="title">Privacy Policy of https://personary-client.herokuapp.com/</h3>
             <p>At Personary, we collect and manage user data according to the following Privacy Policy.</p>
             
             <h4>Data Collected</h4>

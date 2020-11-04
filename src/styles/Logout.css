@@ -1,0 +1,13 @@
+.customLogout {
+  border: #F4976C;
+    order: 6;
+    text-align: center;
+    color: white;
+    padding-left: 20px;
+    padding-right: 18px;
+    padding-top: 10px;
+    padding-bottom: 06px;
+    width: 100px;
+    border-radius: 5px;
+    background-color:#F4976C;
+}

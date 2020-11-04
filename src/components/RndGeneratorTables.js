@@ -9,8 +9,10 @@ function getRandomValueFromTuples( tuples ){
     }
 }
 
-//let hairColorTuples = [ ["blue", 0.1], ["cyan", 0.25], ["magenta", 0.25], ["pink", 0.2], ["red", 0.2] ];
-//console.log( getRandomValueFromTuples(hairColorTuples) );
+
+// Example of tuple use:
+//     let hairColorTuples = [ ["blue", 0.1], ["cyan", 0.25], ["magenta", 0.25], ["pink", 0.2], ["red", 0.2] ];
+//     console.log( getRandomValueFromTuples(hairColorTuples) );
 
 // Generates a random number from 1 to the chosen parameter
 function rndDieRoll(die) {
@@ -42,60 +44,21 @@ let ageTuples = [ [ [1,   "young",             0,        0],       0.04 ],
                 ];
 let rndAgeTableRow = getRandomValueFromTuples(ageTuples);   // This variable is used to pull age-related details [#, category, gray-mod, cohort]
   console.log("The random Base Age:", rndAgeTableRow);
+
+// Age is, effectively, generated outside of a function because the date from its
+// row is required for age, hair, name, children and relationship status.
 // *******************************************************************************
-let agenumber = rndAgeTableRow[0];                       // This variable is used to pull age-related details            DELETE
-  console.log("The random Age Number:", agenumber);
-let actualage = rndAgeTableRow[1];                       // This variable is used to pull age-related details            DELETE
-  console.log("The random Age:", actualage);
-let graymod = rndAgeTableRow[2];                       // This variable is used to pull age-related details            DELETE
-  console.log("The age-based gray mod:", graymod);
-let cohort = rndAgeTableRow[3];                       // This variable is used to pull age-related details            DELETE
-  console.log("The age-based cohort:", cohort);
 
 
-// ************************************************************************************************************************ //
-// ***                                                  AGE                                                             *** //
-//function randomAgeGeneration() {
-  // CharAge... generates a random age category as well as a base chance of having gray hair
-  //            percentages are generally accurate for US pop, BUT skewed slightly upwards from young-->teen
-  //                   age category     gray-mod  marry-cohort  base%
-  //let ageTuples = [ [ ["young",             0,        0],       0.04 ],
-  //                  [ ["youngish",          0,        0],       0.04 ],
-  //                  [ ["teen",              2,        0],       0.08 ],
-  //                  [ ["college-age",       3,        1],       0.07 ],
-  //                  [ ["twenties",          10,       1],       0.11 ],
-  //                  [ ["thirtyish",         30,       1],       0.04 ],
-  //                  [ ["thirties",          30,       1],       0.04 ],
-  //                  [ ["thirty-something",  30,       1],       0.04 ],
-  //                  [ ["fortyish",          40,       1],       0.04 ],
-  //                  [ ["forty-something",   40,       1],       0.03 ],
-  //                  [ ["fourties",          40,       1],       0.04 ],
-  //                  [ ["middle-aged",       50,       1],       0.05 ],
-  //                  [ ["fifties",           50,       2],       0.06 ],
-  //                  [ ["fifty-something",   50,       2],       0.05 ],
-  //                  [ ["sixties",           60,       2],       0.18 ],
-  //                  [ ["seventies",         70,       2],       0.05 ],
-  //                  [ ["old",               80,       3],       0.01 ],
-  //                  [ ["elderly",           90,       3],       0.01 ],
-  //                  [ ["eighties",          80,       3],       0.01 ],
-  //                  [ ["nineties",          90,       3],       0.01 ]
-  //                ];
 
-  //let rndBaseAge = getRandomValueFromTuples(ageTuples);
-  //let rndAgeNumber = rndBaseAge[0];
-  //let rndCharAge = rndBaseAge[1];  //  THIS IS THE RANDOM AGE DESCRIPTOR
-  //let rndcanBeMarried = rndBaseAge[3];       // Used in several locations as a sort of general age category or cohort
-
-  //return rndCharAge;
-//};
 
 // ************************************************************************************************************************ //
 // ***                                          HAIR                                                                    *** //
 function randomHairColorGeneration() {
+
   let GrayHairfromAge = rndAgeTableRow[2]; // This is pulled from the Age Table a public variable
   let ageCohort = rndAgeTableRow[3];          // This is pulled from the Age Table a public variable
   
-
   // CharHair... generates hair length, texture and color AND calculates if hair is; MAY BE overridden by gray-hair chance
   // Hair Length
   let hairLengthTuples = [ ["short", 0.37], ["closely-cropped", 0.08], ["medium", 0.23], ["shoulder-length", 0.15], ["long", 0.13], ["cascading", 0.02], ["trailing", 0.1], ["flowing", 0.1] ];
@@ -161,6 +124,7 @@ function randomHairColorGeneration() {
   let rndCharHair = `${rndHairLength} ${rndHairTexture} ${rndHairColor} hair ${grayHairMessage}` //  THIS IS THE WHOLE HAIR DESCRIPTION
   console.log("Hair is:", rndCharHair);
   console.log("___________________________________________");
+
   return rndCharHair;
 };
 
@@ -168,8 +132,8 @@ function randomHairColorGeneration() {
 // ************************************************************************************************************************ //
 // ***                                          EYE COLOR                                                               *** //
 function randomEyeColorGeneration() {
-  // CharEyeColo... basic eye color based on general population percentage, specific color within is random
 
+  // CharEyeColor... basic eye color based on general population percentage, specific color within is random
     // eye color: black
     let blackEyeColorsList = ['black', 'dark', 'jet black', 'midnight black', 'pitch black', 'smokey black'];
     let rollBlackEyeColorsList = Math.floor( Math.random() * blackEyeColorsList.length );
@@ -210,6 +174,7 @@ function randomEyeColorGeneration() {
 // ************************************************************************************************************************ //
 // ***                                          BODY TYPE                                                               *** //
 function randomBodyTypeGeneration() {
+
   // CharBodyType... typically a single-word descriptor describing a person's body
   let bodyDescriptorList = ['athletic', 'beefy', 'big', 'brawny', 'broad', 'buff', 'built', 
                             'burly', 'coltish', 'compact', 'curvy', 'defined', 'diminuative', 'fit', 'fluffy',
@@ -225,26 +190,31 @@ function randomBodyTypeGeneration() {
   let rndCharBodyType = bodyDescriptorList[rollBodyDescriptorList];  // THIS IS THE RANDOM BODY DESCRIPTOR
   console.log("Body/Build descriptor:", rndCharBodyType);
   console.log("___________________________________________");
+
   return rndCharBodyType;
 };
 
 // ************************************************************************************************************************ //
 // ***                                 POLOR OPPOSITE PERSONALITY DESCRIPTOR                                            *** //
 function randomPersonalityPolarOppGeneration() {
+
   // CharPersonalityPolarOpp... Polar opposites personality descriptor
   let polarOppositesList = ['pessemistic', 'optimistic', 'arrogant', 'humble', 'witty', 'dry', 'pleasant', 'unpleasant', 'friendly', 'unfriendly',
                         'modest', 'conceited', 'patient', 'impatient', 'overachiever', 'underachiever', 'polite', 'impolite', 'graceful', 'clumsy', 'misanthrope', 'philanthrope', 'relaxed', 'uptight', 'egocentric', 'selfless', 'night owl', 'early bird', 'lucky', 'unlucky', 'gullable', 'skeptical', 'ill-tempered', 'even-tempered'
                       ];
   let rollPolarOpposites = Math.floor( Math.random() * polarOppositesList.length );
+
   let rndCharPersonalityPolarOpp = polarOppositesList[rollPolarOpposites];  // THIS IS THE RANDOM POLOR OPPOSITE DESCRIPTOR
   console.log("Personality with polar opposite:", rndCharPersonalityPolarOpp);
   console.log("___________________________________________");
+
   return rndCharPersonalityPolarOpp;
 };
 
 // ************************************************************************************************************************ //
 // ***                                          PERSONALITY DESCRIPTOR                                                  *** //
 function randomPersonalityDescriptorGeneration() {
+
   // CharPersonalityDescriptor... a personality descriptor
   let personalityDescriptorsList = ['adventurous', 'ambitious', 'calm', 'cautious', 'cheerful', 'curious', 'cynical', 'delightful', 'difficult', 
                                 'draconian', 'easy-going', 'exhuberent', 'funny', 'generous', 'gruff', 'happy', 'hard', 'intense', 'irrepressible', 
@@ -252,21 +222,26 @@ function randomPersonalityDescriptorGeneration() {
                                 'sarcastic', 'scientific', 'sensible', 'serious', 'stoic', 'tense', 'tough', 'vengeful', 'well-mannered'
                               ];
   let rollpersonalityDescriptorsList = Math.floor( Math.random() * personalityDescriptorsList.length );
+
   let rndCharPersonalityDescriptor = personalityDescriptorsList[rollpersonalityDescriptorsList];  // THIS IS THE RANDOM PERSONALITY DESCRIPTOR
   console.log("Personality descriptor:", rndCharPersonalityDescriptor);
   console.log("___________________________________________");
+
   return rndCharPersonalityDescriptor;
 };
 
 // ************************************************************************************************************************ //
 // ***                                          PERSONALITY QUIRK                                                       *** //
 function randomPersonalityQuirkGeneration() {
+
   // CharPersonalityQuirk... a single oddity or quirk in the personality
   let personalityQuirksList = ['acrophobia', 'agoraphobia', 'always carries binoculars for bird-watching', 'always cold', 'always too warm', 'always formally introduces self', 'amazing credit score', 'ambidextrous', 'animal lover', 'arachnophobia', 'artistic talent', 'awful driver', 'bad acne', 'beautiful, flourished handwriting', 'blinks slowly', 'brave and fearless', 'brutally honest', 'caffeinoholic', 'calls soft drinks "soda pop"', 'can read minds', 'can recite the alphabet backwards quickly', 'can sleep pretty much anywhere', "can't remember faces", "can't remember names", "can't stand eggs", 'carries a notebook and constantly takes notes', 'celebrates an entirely personal holiday', 'celebrates obscure holidays', 'charmingly naive', 'must check appearance when passing a mirror', 'chews fingernails', 'chronic reader', 'chronically checks the time', 'class clown', 'has collection of celebrity-look-a-like potato chips', 'collects rocks', 'compulsive liar', 'constantly subreferences when speaking', 'coulrophobia', 'curses like a sailor', 'daydreamer', 'defensive when disagreed with', 'distinctive clothing accessory', "doesn't know the lyrics, but sings anyway", 'drags feet', 'easily distracted', 'easily makes friends with pets', 'easily startled', 'eats baby food for lunch', 'eats one item at a time when dining', 'eats peanut butter with a spoon', 'eats butter', 'extremeties are always cold', 'falsely believes is mechanically inclined', 'fantastic cook', 'fast-talker', 'has a favorite pair of socks', 'fidgetty', 'fine with just four hours of sleep a day', 'fond of malapropisms', 'forgetful', 'freckles', 'friendly wink', 'friends with everyone', 'frowning expression', 'gifts amazing homemade presents', 'gives pet names', 'goth', 'gravelly voice', 'guilty conscience', 'hamburgers are round, NEVER square', 'has a catch phrase', 'has a pet lizard', 'has and still wears a Swatch', 'has difficult with scale', 'has eyewear', 'has perfect color coordination', 'has perfect pitch', "couldn't carry a tune in a bucket", 'has an unusual or exotic pet', 'hates getting wet', 'hates a quiet pause in conversation', 'hates lint', 'hates sand', 'heavily salts food, even before tasting it', 'heavy breather', 'high pain threshold', 'just hilarious to be around', 'history buff', 'horrible sense of direction', 'huge child-like grin', 'hums the Imperial Theme from Star Wars when annoyed', 'illegible handwriting', 'incessant complainer', 'insists on blue ink, NEVER black', 'intense stare', 'itchy', 'jumps into bed so nothing can grab you', 'keeps wristwatch in pocket', 'ketchup goes on everything', 'has memorized pi to the thousandth decimal', 'knows the Thriller dance, beginning to end', 'large hands', 'laughs easily', 'leaves editorial notes in library books', 'leering smile', 'left-handed', 'lives in a haunted house', 'loves to drink', 'loves to eat', 'loves to sing', 'luddite', 'lumbering walk', 'maintains an uncomfortable level of eye contact', 'maintains an uncomfortably neat desk', 'militant vegan', 'mindlessly doodles', 'tunelessly hums', 'morbid sense of humor', 'mumbles', 'musical talent', 'musical voice', 'mutters under breath', 'neatly trimmed facial hair', 'needs more pepper!', 'nervous', 'nervous habit', 'never met a stranger', 'refuses to use contractions when speaking', 'nocturnal lifestyle', 'noticeable birthmark', 'noticeable mole', 'noticeable scar', 'obsessed with a certain holiday', 'obsessed with personal hygiene', 'obsession with symmetry', 'OCD', 'odd sense of humor', 'uses English spelling (e.g. humour, colour, civilisation, calibre, centre, devise, etc.)', 'only drinks soft drinks with a straw', 'drinks beer with straw', 'only drinks sparkling water, never still', 'only uses a pocket watch', 'only watches badly reviewed movies', 'overthinks to the point of confusion', 'paces', 'passionate about a sport', 'passionate about art', 'passionate about music', 'perfect enunciation', 'photographic memory', 'many piercings', 'pizza is a food group', 'plays with hair', 'poor posture', 'most clothing owned is one primary color', 'prone to vague, noncommital answers', 'prone to exaggeration when telling stories', 'pumps gass to an even numbered dollar amount', 'quirky sense of humor', 'rarely speaks unless spoken to', 'raspy voice', 'creeky voice', 'deep voice', 'husky voice', 'refers to all older women as "mother"', 'refrains from vulgarity', 'regularly quotes Shakespeare', 'regularly speaks in hypotheticals', 'regularly speaks in metaphors, analogies and similies', 'replaces curse words with silly substitutes', 'always rheumy due to allergies', 'ridiculous grin', 'rolls eyes', 'says, "uhhhhh..." a lot while talking', 'self-destructive', 'shuffles feet', 'sings old pop songs in a ridiculous voice', 'skilled fisherman', 'amataur taxidermist', 'knows sleight-of-hand magic', 'slight tic', 'small feet', 'smells like hot buttered popcorn', 'smokes clove cigarettes', 'sneezes in threes', 'snorts when laughing', 'socially awkward', 'self-references in the third person', 'speaks pig-Mandarin', 'speaks slowly and deliberately', 'speaks with an indiscernable accent', 'speaks with poetic flair', 'squints', 'stiff posture', 'perfect posture', 'strong preference for being barefoot', 'sunburns easily', 'surprisingly strong', 'talks to inanimate objects', 'talks to mom/dad every day', 'many tatoos', 'teetotaler', 'wears a Timex calculator watch', 'types aggressively', 'unblinking stare', 'unusual pronunciation of own name', 'unusually hairy', 'ventriloquist', 'very superstitious (traditional)', "very superstitious (other culture's)", 'very superstitious (weird personal)', 'vulgar sense of humor', 'walks toe to heel', 'walks with a limp', 'regularly wears a dickey', 'wears a strong, uncommon - not unpleasant - scent', 'always wears a baseball cap', 'wears watch on inside of wrist', 'whistles tunelessly', 'will only do a crossword puzzle in pen', 'withdrawn in large groups', "won't eat in front of others", "reluctant to make eye contact", 'writes in block, capital letters'];
   let rollPersonalityQuirksList = Math.floor( Math.random() * personalityQuirksList.length );
+
   let rndCharPersonalityQuirk = personalityQuirksList[rollPersonalityQuirksList];  // THIS IS THE RANDOM PERSONALITY QUIRK
   console.log("Personality quirk:", rndCharPersonalityQuirk);
   console.log("___________________________________________");
+
   return rndCharPersonalityQuirk;
 };
 
@@ -295,6 +270,7 @@ function randomRelationshipStatusGeneration() {
   };
   console.log("Relationship status:", rndCharRelationshipStatus);
   console.log("___________________________________________");
+
   return rndCharRelationshipStatus;
 };
 
@@ -304,7 +280,7 @@ function randomNumberOfChildrenGeneration() {
 
   let ageCohort = rndAgeTableRow[3]; // This is pulled from the Age Table a public variable
 
-  // Modified tuple function that takes a modifier
+  // Modified tuple function that takes a modifier; random# is skewed based on ageCohort
   function getQtyOfChildrenFromTuples( tuples, rollMod ){
     let roll = Math.random() + rollMod;
     if (roll > .99) {roll = .999999999};
@@ -346,11 +322,11 @@ function randomNumberOfChildrenGeneration() {
                           [ ["5+",     hasTwins,   rndAddonsToChildren],     0.02] ];
 
   if (ageCohort > 0 ) {   //  Contrary to reality, the persona may only have children if age is older than 'teen'
-    let rndQtyChildren = getQtyOfChildrenFromTuples(qtyChlildrenList, childrenQtyModifier); // THIS IS THE # OF CHILDREN or
+    let rndQtyChildren = getQtyOfChildrenFromTuples(qtyChlildrenList, childrenQtyModifier);
     let qtyOfChildren = rndQtyChildren[0];
     let childrenTwinsStatement = rndQtyChildren[1];
     let addtionalChildrenDetails = rndQtyChildren[2];
-    rndCharChildren = `${qtyOfChildren}${childrenTwinsStatement}${addtionalChildrenDetails}`
+    rndCharChildren = `${qtyOfChildren}${childrenTwinsStatement}${addtionalChildrenDetails}`; // THIS IS THE # OF CHILDREN or
   } else {
     rndCharChildren = "none"; // THIS IS THE # OF CHILDREN
   };
@@ -365,6 +341,7 @@ function randomNumberOfChildrenGeneration() {
 // ************************************************************************************************************************ //
 // ***                                          PERSONALITY TYPE                                                        *** //
 function randomPersonalityTypeGeneration() {
+
   let MyersBriggsList = [ [ [ "ISTJ", "Introverted-Sensing-Thinking-Judging", "often called 'inspectors', they have a have a keen sense of right and wrong, especially in their area of interest and/or responsibility. They are noted for devotion to duty; Punctuality is their watchword."], 0.12],
   [ [ "ISTP", "Introverted-Sensing-Thinking-Perceiving", "fundamentally peformers, their interests tend to be mechanical, rather than artistic, and rarely present an impression of constant activity.  They typically lay dormant, saving energy for a worthy project in which they then launch themselves."], 0.05],
   [ [ "ESTP", "Extraverted-Sensing-Thinking-Perceiving", "spontaneous, active folk, they get great satisfaction from acting on their impulses.  Activities involving great power, speed, thrill and risk are the most attractive and chronically stifling these impulses will make them feel 'dead inside'."], 0.05],
@@ -385,7 +362,6 @@ function randomPersonalityTypeGeneration() {
   let rndMyersBriggsChoice = getRandomValueFromTuples(MyersBriggsList);
   let finalMyersBriggs = `${rndMyersBriggsChoice[0]} - ${rndMyersBriggsChoice[1]}: ${rndMyersBriggsChoice[2]}`;
 
-
   let DiSCList = [  [ [ "DC", "The Challenger", "resolute and strong-willed; tend to be leaders and are often achievers with the motivation to succeed.  However, they could benefit from slowing down and taking time to listen to and understand the other players on the team."], 0.03],
                     [ [ "D", "The Winner", "forceful and direct; focused and inspirational, they tend to have a big-picture mindset; looking for results and then identifying the next best step.  Typically, they delegate tasks and, as they are confident, tend to find themselves in management positions."], 0.04],
                     [ [ "Di", "The Seeker", "convincing and daring; a dominant, fast-paced personality, they bring creativity and innovation to their team and are always looking for new, fresh ideas.  They are focused and tend to work well in teams, having a sense of urgency and appreciation of directness."], 0.03],
@@ -403,9 +379,11 @@ function randomPersonalityTypeGeneration() {
   let finalDiSC = `${rndDiSCChoice[0]} - ${rndDiSCChoice[1]}: ${rndDiSCChoice[2]}`;
 
   let personalityTypeTuples = [ [finalMyersBriggs, 0.75], [finalDiSC, 0.25] ];
+
   let rndCharPersonalityType = getRandomValueFromTuples(personalityTypeTuples);  // THIS IS PERSONALITY TYPE
   console.log("Personality type:", rndCharPersonalityType);
   console.log("___________________________________________");
+
   return rndCharPersonalityType;
 };
 
@@ -481,13 +459,12 @@ function randomNameGeneration() {
   let lowest100SurnamesInUS = [ 'Cote', 'Reilly', 'Compton', 'Raymond', 'Mooney', 'Mcgowan', 'Craft', 'Cleveland', 'Clemons', 'Wynn', 'Nielsen', 'Baird', 'Stanton', 'Snider', 'Rosales', 'Bright', 'Witt', 'Stuart', 'Hays', 'Holden', 'Rutledge', 'Kinney', 'Clements', 'Castaneda', 'Slater', 'Hahn', 'Emerson', 'Conrad', 'Burks', 'Delaney', 'Pate', 'Lancaster', 'Sweet', 'Justice', 'Tyson', 'Sharpe', 'Whitfield', 'Talley', 'Marcias', 'Irwin', 'Burris', 'Ratliff', 'Mccray', 'Madden', 'Kaufman', 'Beach', 'Goff', 'Cash', 'Bolton', 'McFadden', 'Levine', 'Good', 'Byers', 'Kirkland', 'Kidd', 'Workman', 'Carney', 'Dale', 'Mcleod', 'Holcomb', 'England', 'Finch', 'Head', 'Burt', 'Hendrix', 'Sosa', 'Haney', 'Franks', 'Sargent', 'Nieves', 'Downs', 'Rasmussen', 'Bird', 'Hewitt', 'Lindsay', 'Le', 'Foreman', "O'Neil", 'Delacruz', 'Vinson', 'Dejesus', 'Hyde', 'Forbes', 'Gilliam', 'Guthrie', 'Wooten', 'Huber', 'Barlow', 'Boyle', 'Mcmahon', 'Buckner', 'Rocha', 'Puckett', 'Langley', 'Knowles', 'Cooke', 'Velazquez', 'Whitley', 'Noel', 'Vang' ];
   let chosenLowest100SurnamesInUS = lowest100SurnamesInUS[rndDieRoll(lowest100SurnamesInUS.length)];
 
-
   let surnamesTupleList = [ [chosenTop100SurnamesInUS, 0.5], [chosenMiddle100SurnamesInUS, 0.3], [chosenLowest100SurnamesInUS, 0.2] ];
   let rndSurname = getRandomValueFromTuples(surnamesTupleList);
 
-
   let rndCharName = `${rndFirstNamePairs}  ${rndMiddleInitialPairs}  ${rndSurname}`; //  THIS IS THE NAME
   console.log("Random full name is:", rndCharName);
+
   return rndCharName;
 };
 
