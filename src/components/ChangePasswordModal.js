@@ -17,10 +17,6 @@ import '../styles/ChangePassword.css';
             setUnmountOnClose(JSON.parse(value));
         }
 
-<<<<<<< HEAD
-    
-
-=======
     const [username, setUsername] = useState('');
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
@@ -58,7 +54,6 @@ const handleSubmit = (event) => {
     }
 };
  
->>>>>>> 925bcca3bf3189a7822906a0af128225ba56671d
     return (
         <div>
             <Form inline onSubmit={(e) => e.preventDefault()}>
