@@ -1,14 +1,17 @@
 import React, {useState} from "react";
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 
+import APIURL from "../helpers/environment";
+
 const Login = (props) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [accountInfo, setAccountInfo] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch('http://localhost:8080/user/login', {
+        fetch(`${APIURL}user/login`, {
             method: 'POST',
             body: JSON.stringify({
                 user: {
@@ -22,7 +25,11 @@ const Login = (props) => {
             (response) => response.json()
         ).then((data) => {
             console.log(data)
-            //props.updateToken(data.sessionToken);
+            if(data.error){ console.log(data.error); }
+            else{
+                props.updateToken(data.sessionToken);
+                props.fetchInfo(data.user.username);
+            }
         })
      }
 
@@ -32,11 +39,11 @@ const Login = (props) => {
           <Form onSubmit={handleSubmit}>
           <FormGroup>
                     <Label htmlFor="username">Username</Label>
-                   <Input onChange={(e) => setUsername(e.target.value)} name="username" value={username}/>
+                   <Input onChange={(e) => setUsername(e.target.value)} name="username" type="text" value={username}/>
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="password">Password</Label>
-                    <Input onChange={(e) => setPassword(e.target.value)} name="password" value={password}/>
+                    <Input onChange={(e) => setPassword(e.target.value)} name="password" type="password" value={password}/>
                 </FormGroup>
                 <Button type="submit">Login</Button>
             </Form> 

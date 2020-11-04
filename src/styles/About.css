@@ -1,0 +1,28 @@
+.about {
+  text-align: left;
+  background-color: #303c6c;
+  height: 900px;  
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: white;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 10vh;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 30px;
+  color: #FBE8A6;
+}
+
+.subTitle {
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+}

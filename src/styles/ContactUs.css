@@ -1,0 +1,42 @@
+.contactForm {
+  text-align: left;
+  background-color: #303c6c;
+  height: 900px;  
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: white;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 10vh;
+  color: #FBE8A6;
+}
+
+
+.formLabels {
+  margin-top: 30px;
+  color: #FBE8A6;
+  font-size: 20px;
+}
+
+#inputButton {
+  font-weight: bold;
+  width: 100px;
+  background-color: #FBE8A6;
+}
+
+#email-subject {
+
+}
+
+#full-name {
+  width: 400px;
+}
+
+#email-address {
+  width: 400px;
+}

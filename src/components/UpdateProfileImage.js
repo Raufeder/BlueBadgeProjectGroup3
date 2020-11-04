@@ -3,7 +3,8 @@ import React from "react";
 const UpdateProfileImage = (props) => {
 
     return (
-        <div>UpdateProfileImage Comp</div>
+        
+        <div><img className="profilePic" src={props.userimg} alt="user profile image"/></div>
     )
 };
 

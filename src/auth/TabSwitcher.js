@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import classnames from 'classnames';
 
@@ -15,10 +14,12 @@ const TabSwitcher = (props) => {
         if(activeTab !== tab) setActiveTab(tab);
     }
 
+    let navItemStyle = { backgroundColor: "white", width: "47%", borderRadius: "5px 5px 0px 0px" };
+
     return (
         <div style={{width: "60%", height: "40%", marginLeft: "auto", marginRight: "auto"}}>
-            <Nav tabs>
-                <NavItem>
+            <Nav style={{ width: "100%"}}tabs>
+                <NavItem style={navItemStyle}>
                 <NavLink
                     className={classnames({ active: activeTab === '1' })}
                     onClick={() => { toggle('1'); }}
@@ -26,7 +27,8 @@ const TabSwitcher = (props) => {
                     Login
                 </NavLink>
                 </NavItem>
-                <NavItem>
+                <div style={{ width: "6%" }}></div>
+                <NavItem style={navItemStyle}>
                 <NavLink
                     className={classnames({ active: activeTab === '2' })}
                     onClick={() => { toggle('2'); }}
@@ -37,7 +39,7 @@ const TabSwitcher = (props) => {
             </Nav>
             <TabContent style={{border: "1px solid black"}} activeTab={activeTab}>
                 <TabPane tabId="1">
-                    <Login />
+                    <Login fetchInfo={props.fetchInfo} updateToken={props.updateToken} setIsLoggedIn={props.setIsLoggedIn} />
                 </TabPane>
                 <TabPane tabId="2">
                     <Register />

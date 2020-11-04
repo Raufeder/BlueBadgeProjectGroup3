@@ -1,10 +1,13 @@
 import './App.css';
-import React, {useState} from "react";
+import React, {useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+import APIURL from "./helpers/environment";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import TabSwitcher from "./auth/TabSwitcher";
 import SideBar from "./sections/Sidebar";
@@ -20,31 +23,72 @@ import MyCharacters from "./sections/MyCharacters";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [accountInfo, setAccountInfo] = useState({});
+  const [characterList, setCharacterList] = useState(null);
 
+ const updateToken = (token) => { localStorage.setItem("sessionToken", token); };
 
+  const fetchCharacters = () => {
+    fetch(`${APIURL}character/`, {
+            method: "GET",
+            headers: new Headers({
+                authorization: "Bearer " + localStorage.getItem("sessionToken")
+            }),
+        })
+        .then(response => response.json())
+        .then(body => {
+            setCharacterList(body.results);
+            setIsLoggedIn(true)
+        })
+        .catch((error) => console.log(error));
+  }
+
+  const fetchAccountInfo = (userName) => {
+    fetch(`${APIURL}user/view/${userName}`, {
+        method: 'GET',
+        headers: new Headers({
+            "Content-Type": 'application/json',
+            "authorization": "Bearer " + localStorage.getItem('sessionToken')
+        })
+    }).then((res) => res.json())
+    .then((logData) => {
+        setAccountInfo(logData)
+        fetchCharacters();
+        console.log("accountInfoLogged " + logData)
+    })
+  }
+
+  let pageContainerStyle = {position: "fixed", left: "350px", right: "0px", height: "100%", overflow: "auto"};
   return (
     <div className="App">
       <Router >
-       {isLoggedIn ? <><SideBar /><Logout /></> : <TabSwitcher /> }
+       {isLoggedIn ? <><SideBar accountInfo={accountInfo} userimg={accountInfo.url_userimage}/><Logout setIsLoggedIn={setIsLoggedIn} /></> : <TabSwitcher fetchInfo={fetchAccountInfo} updateToken={updateToken} setIsLoggedIn={setIsLoggedIn} /> }
        <Switch>
-          { isLoggedIn ? <Route exact path="/"><MyCharacters /></Route> : <></> }
+          { isLoggedIn ? 
+            <Route exact path="/">
+              <div style={pageContainerStyle}><MyCharacters fetchCharacters={fetchCharacters} characterList={characterList} /></div>
+            </Route> : <></> 
+          }
           <Route exact path="/account">
-            <Account />
+            <div style={pageContainerStyle}><Account accountInfo={accountInfo} userimg={accountInfo.url_userimage}/></div>
           </Route>
           <Route exact path="/mycharacters">
-            <MyCharacters />
+            <div style={pageContainerStyle}><MyCharacters fetchCharacters={fetchCharacters} characterList={characterList} /></div>
           </Route>
-          <Route exact path="/createnewcharacter">
-            <CreateCharacter />
+          <Route exact path="/createnewcharacter" key="createRoute" >
+            <div style={pageContainerStyle}><CreateCharacter mode={"Create"}/></div>
+          </Route>
+          <Route path="/viewcharacter/:id" key="viewRoute">
+            <div style={pageContainerStyle}><CreateCharacter mode={"View"} characterList={characterList} /></div>
           </Route>
           <Route exact path="/about">
-            <About />
+            <div style={pageContainerStyle}><About /></div>
           </Route>
           <Route exact path="/contactus">
-            <ContactUs />
+            <div style={pageContainerStyle}><ContactUs /></div>
           </Route>
           <Route exact path="/privacypolicy">
-            <PrivacyPolicy />
+            <div style={pageContainerStyle}><PrivacyPolicy /></div>
           </Route>
         </Switch>
       </Router>

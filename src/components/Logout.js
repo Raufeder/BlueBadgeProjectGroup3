@@ -1,13 +1,16 @@
-import React from "react";
+import React, { Component } from "react";
 import {Button} from "reactstrap";
 
-const Logout = (props) => {
+class Logout extends Component {
+    logout = () => { localStorage.clear("sessionToken"); this.props.setIsLoggedIn(false); };
 
-    return (
-        <div style={{position: "absolute", top: "50px", right: "50px"}}>
-            <Button color="secondary" size="lg">Logout Comp</Button>
-        </div>
-    )
+    render() {
+        return (
+            <div style={{position: "fixed", top: "50px", right: "50px", zIndex: "100"}}>
+                <Button color="secondary" size="lg" onClick={this.logout}>Logout Comp</Button>
+            </div>
+        );
+    }
 };
 
 export default Logout;
