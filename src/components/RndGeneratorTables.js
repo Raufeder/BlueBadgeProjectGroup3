@@ -488,6 +488,7 @@ function randomNameGeneration() {
 
   let rndCharName = `${rndFirstNamePairs}  ${rndMiddleInitialPairs}  ${rndSurname}`; //  THIS IS THE NAME
   console.log("Random full name is:", rndCharName);
+  return rndCharName;
 };
 
 //*********************************************************************************************************** */

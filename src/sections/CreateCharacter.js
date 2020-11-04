@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from "react";
 import "../styles/createCharacter.css"
 import {useParams} from "react-router-dom";
+import APIURL from "../helpers/environment";
 
 import EditFieldInput from "../components/EditFieldInput";
 import charImg from "../assets/userimg.png";
@@ -66,7 +67,7 @@ const CreateCharacter = (props) => {
         // call the create route here and send up the data from all of the inputs
         e.preventDefault();
 
-        fetch("http://localhost:8080/character/create", {
+        fetch(`${APIURL}character/create`, {
             method: "POST",
             body: JSON.stringify(createJSONData(e.target)),
             headers: new Headers({

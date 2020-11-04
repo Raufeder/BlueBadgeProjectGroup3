@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input, Label} from 'reactstrap';
+import APIURL from "../helpers/environment";
+
 import '../styles/DeleteAccount.css';
 
 const DeleteAccount = (props) => {
@@ -22,7 +24,7 @@ const DeleteAccount = (props) => {
       event.preventDefault();
       
       if(username && password) {
-      fetch('http://localhost:8080/user/delete', {
+      fetch(`${APIURL}user/delete`, {
           method: 'DELETE',
           headers: {
               "Content-Type": "application/json"

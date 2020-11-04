@@ -5,7 +5,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-
+import APIURL from "./helpers/environment";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -29,7 +29,7 @@ function App() {
  const updateToken = (token) => { localStorage.setItem("sessionToken", token); };
 
   const fetchCharacters = () => {
-    fetch("http://localhost:8080/character/", {
+    fetch(`${APIURL}character/`, {
             method: "GET",
             headers: new Headers({
                 authorization: "Bearer " + localStorage.getItem("sessionToken")
@@ -44,7 +44,7 @@ function App() {
   }
 
   const fetchAccountInfo = (userName) => {
-    fetch(`http://localhost:8080/user/view/${userName}`, {
+    fetch(`${APIURL}/user/view/${userName}`, {
         method: 'GET',
         headers: new Headers({
             "Content-Type": 'application/json',

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Input, Label, FormGroup } from 'reactstrap';
+
+import APIURL from "../helpers/environment";
 // TODO import styles here
 
 const Register = (props) => {
@@ -16,7 +18,7 @@ const Register = (props) => {
 
         if(username && password){
             if(password === passwordConfirm) {
-                fetch('http://localhost:8080/user/register', {
+                fetch(`${APIURL}user/register`, {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json"
@@ -29,7 +31,7 @@ const Register = (props) => {
                 .then(response => response.json())
                 .then(() => {
                     console.log("User Registered Successfully!")
-                    // fetch('http://localhost8080/user/login', {
+                    // fetch(`${APIURL}user/login`, {
                     //     method: 'POST',
                     //     headers: {
                     //         "Content-Type": "application/json"
