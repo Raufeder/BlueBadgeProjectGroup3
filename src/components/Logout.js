@@ -6,7 +6,7 @@ class Logout extends Component {
 
     render() {
         return (
-            <div style={{position: "absolute", top: "50px", right: "50px", zIndex: "100"}}>
+            <div style={{position: "fixed", top: "50px", right: "50px", zIndex: "100"}}>
                 <Button color="secondary" size="lg" onClick={this.logout}>Logout Comp</Button>
             </div>
         );

@@ -1,0 +1,13 @@
+.characterPic {
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.bootstrapRow {
+    padding: 50px;
+}
+
+.bootstrapContainer {
+    margin-top: 100px;
+}

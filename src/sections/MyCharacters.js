@@ -1,39 +1,38 @@
 import React, { useState, useEffect } from "react";
-
+import {Container, Row, Col} from "reactstrap";
 import IndividualCharacter from "../components/IndividualCharacter";
 
-const MyCharacters = (props) => {
+import {Link} from "react-router-dom";
 
-    const [ characterList, setCharacterList ] = useState([]);
+import "../styles/MyCharacters.css";
+
+const MyCharacters = (props) => {
+    
     // const [ modalOpen, setModalOpen ] = useState(false);
 
     useEffect(() => {
-        fetch("http://localhost:8080/character/", {
-            method: "GET",
-            headers: new Headers({
-                authorization: "Bearer " + localStorage.getItem("sessionToken")
-            }),
-        })
-        .then(response => response.json())
-        .then(body => {
-            //setCharacterList(body.results);
-            console.log(body);
-        })
-        .catch((error) => console.log(error));
+        props.fetchCharacters()
     }, [])
 
     return (
         <div id="listView">
            <div id="listViewHeader"> 
-               <h1>My Characters</h1>
+               <h2 style={{ textAlign: "left", paddingLeft: "50px", marginTop: "30px" }}>My Characters</h2>
                <div id="characterSection">
-            <IndividualCharacter />
-            <IndividualCharacter />
-            <IndividualCharacter />
-            <IndividualCharacter />
-            <IndividualCharacter />
-            <IndividualCharacter />
-            </div>
+                   <Container fluid={true} className="bootstrapContainer" >
+                        <Row className="bootstrapRow">
+                            { props.characterList ? props.characterList.map( (val, i) => {
+                               return (
+                                    <Col xl="4" >
+                                        <Link to={`/viewcharacter/${val.id}`} >
+                                            <IndividualCharacter charName={val.CharName}/>
+                                        </Link>
+                                    </Col>
+                                );
+                            }) : <></>}
+                        </Row>
+                    </Container>
+                </div>
             </div>
         </div>
     )
