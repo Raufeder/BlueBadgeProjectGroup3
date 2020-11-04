@@ -6,6 +6,8 @@ import APIURL from "../helpers/environment";
 import EditFieldInput from "../components/EditFieldInput";
 import charImg from "../assets/userimg.png";
 import IndividualCharacter from "../components/IndividualCharacter";
+import exportObject from "../components/RndGeneratorTables";
+
 
 import {Form, Container, Row, Col, Tooltip, Button} from "reactstrap";
 
@@ -30,22 +32,22 @@ const CreateCharacter = (props) => {
             case "Create":
                 //TODO: run generators for all the fields
                 let charModel = {
-                    charName: "",
+                    charName: exportObject.getRandomName(),
                     charImageURL: "",
-                    charBodyType: "",
-                    charHair: "",
-                    charEyeColor: "",
+                    charBodyType: exportObject.getRandomBodyType(),
+                    charHair: exportObject.getRandomHairColor(),
+                    charEyeColor: exportObject.getRandomEyeColor(),
                     charGender: "",
-                    charAge: "",
-                    charRelationshipStatus: "",
-                    charChildren: "",
+                    charAge: exportObject.getRandomAge(),
+                    charRelationshipStatus: exportObject.getRandomRelationshipStatus(),
+                    charChildren: exportObject.getRandomNumberOfChildren(),
                     charOccupation: "",
                     charDescription: "",
                     charHistory: "",
-                    charPersonalityType: "",
-                    charPersonalityPolarOpp: "",
-                    charPersonalityDescription: "",
-                    charPersonalityQuirk: ""
+                    charPersonalityType: exportObject.getRandomPersonalityType(),
+                    charPersonalityPolarOpp: exportObject.randomPersonalityPolarOpposite(),
+                    charPersonalityDescription: exportObject.getRandomPersonalityDescription(),
+                    charPersonalityQuirk: exportObject.getRandomPersonalityQuirk(),
                 };
                 setCharData(charModel);
                 break;
