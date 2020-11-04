@@ -1,19 +1,18 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import DeleteAccount from "../components/DeleteAccount";
 import UpdateProfileImage from "../components/UpdateProfileImage";
-import IndividualUser from "../components/IndividualUser";
+
 import ChangePasswordModal from "../components/ChangePasswordModal";
 import '../styles/Account.css';
 
 const Account = (props) => {
 
-    const [showPasswordModal, setShowPasswordModal] = useState(true);
+    const [showPasswordModal, setShowPasswordModal] = useState(false);
     const [accountInfo, setAccountInfo ] = useState(props.accountInfo) 
 
 
     
     return (
-
     <div>
         
         <div className="profilePicture"><UpdateProfileImage  userimg={accountInfo.url_userimage}/><br/>
@@ -31,4 +30,5 @@ const Account = (props) => {
     
     )
 };
+
 export default Account;
