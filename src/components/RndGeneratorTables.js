@@ -560,3 +560,17 @@ function getRandomPersonalityQuirk() {
   return CharPersonalityQuirk;
 };
 
+
+export default {
+  getRandomAge: getRandomAge,
+  getRandomHairColor: getRandomHairColor,
+  getRandomName: getRandomName,
+  getRandomRelationshipStatus: getRandomRelationshipStatus,
+  getRandomNumberOfChildren: getRandomNumberOfChildren,
+  getRandomBodyType: getRandomBodyType,
+  getRandomEyeColor: getRandomEyeColor,
+  getRandomPersonalityType: getRandomPersonalityType,
+  randomPersonalityPolarOpposite: randomPersonalityPolarOpposite,
+  getRandomPersonalityDescription: getRandomPersonalityDescription,
+  getRandomPersonalityQuirk: getRandomPersonalityQuirk
+};
