@@ -123,7 +123,6 @@ function randomHairColorGeneration() {
 
   let rndCharHair = `${rndHairLength} ${rndHairTexture} ${rndHairColor} hair ${grayHairMessage}` //  THIS IS THE WHOLE HAIR DESCRIPTION
   console.log("Hair is:", rndCharHair);
-  console.log("___________________________________________");
 
   return rndCharHair;
 };
@@ -166,8 +165,7 @@ function randomEyeColorGeneration() {
     let eyeColorTuples = [ [blackEyeColorsListRndChoice, 0.15], [blueEyeColorsListRndChoice, 0.27], [brownEyeColorsListRndChoice, 0.30], [grayEyeColorsListRndChoice, 0.08], [greenEyeColorsListRndChoice, 0.15], [violetEyeColorsListRndChoice, 0.05] ];
     let rndCharEyeColor = getRandomValueFromTuples(eyeColorTuples);  // THIS IS THE RANDOM EYE COLOR
     console.log("Eye color is:", rndCharEyeColor)
-    console.log("___________________________________________");
-    
+      
     return rndCharEyeColor;
 };
 
@@ -189,7 +187,6 @@ function randomBodyTypeGeneration() {
 
   let rndCharBodyType = bodyDescriptorList[rollBodyDescriptorList];  // THIS IS THE RANDOM BODY DESCRIPTOR
   console.log("Body/Build descriptor:", rndCharBodyType);
-  console.log("___________________________________________");
 
   return rndCharBodyType;
 };
@@ -206,7 +203,6 @@ function randomPersonalityPolarOppGeneration() {
 
   let rndCharPersonalityPolarOpp = polarOppositesList[rollPolarOpposites];  // THIS IS THE RANDOM POLOR OPPOSITE DESCRIPTOR
   console.log("Personality with polar opposite:", rndCharPersonalityPolarOpp);
-  console.log("___________________________________________");
 
   return rndCharPersonalityPolarOpp;
 };
@@ -225,7 +221,6 @@ function randomPersonalityDescriptorGeneration() {
 
   let rndCharPersonalityDescriptor = personalityDescriptorsList[rollpersonalityDescriptorsList];  // THIS IS THE RANDOM PERSONALITY DESCRIPTOR
   console.log("Personality descriptor:", rndCharPersonalityDescriptor);
-  console.log("___________________________________________");
 
   return rndCharPersonalityDescriptor;
 };
@@ -240,7 +235,6 @@ function randomPersonalityQuirkGeneration() {
 
   let rndCharPersonalityQuirk = personalityQuirksList[rollPersonalityQuirksList];  // THIS IS THE RANDOM PERSONALITY QUIRK
   console.log("Personality quirk:", rndCharPersonalityQuirk);
-  console.log("___________________________________________");
 
   return rndCharPersonalityQuirk;
 };
@@ -269,7 +263,6 @@ function randomRelationshipStatusGeneration() {
     rndCharRelationshipStatus = "single";  // THIS IS THE RELATIONSHIP STATUS
   };
   console.log("Relationship status:", rndCharRelationshipStatus);
-  console.log("___________________________________________");
 
   return rndCharRelationshipStatus;
 };
@@ -332,7 +325,6 @@ function randomNumberOfChildrenGeneration() {
   };
 
   console.log("Number of children:", rndCharChildren);
-  console.log("___________________________________________");
 
   return rndCharChildren;
 };
@@ -382,7 +374,6 @@ function randomPersonalityTypeGeneration() {
 
   let rndCharPersonalityType = getRandomValueFromTuples(personalityTypeTuples);  // THIS IS PERSONALITY TYPE
   console.log("Personality type:", rndCharPersonalityType);
-  console.log("___________________________________________");
 
   return rndCharPersonalityType;
 };
