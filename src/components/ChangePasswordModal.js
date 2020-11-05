@@ -19,7 +19,6 @@ import '../styles/ChangePassword.css';
             setUnmountOnClose(JSON.parse(value));
         }
 
-    const [username, setUsername] = useState('');
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [newPasswordConfirm, setPasswordConfirm] = useState('');
@@ -28,9 +27,8 @@ import '../styles/ChangePassword.css';
     const triggerNewPasswordInputChange = (event) => setNewPassword(event.target.value);
     const triggerNewPasswordConfirmInputChange = (event) => setPasswordConfirm(event.target.value);
 
-const handleSubmit = (event) => {
-    event.preventDefault();
-
+const handleClick = (event) => {
+    toggle();
     if (oldPassword && newPassword) {
         if(newPassword === newPasswordConfirm) {
             fetch(`${APIURL}user/changepassword`, {
@@ -39,14 +37,14 @@ const handleSubmit = (event) => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({user: {
-                    username: username,
+                    username: props.username,
                     oldPassword: oldPassword,
                     newPassword: newPassword
                 }})
             })
             .then(response => response.json())
-            .then(() => {
-                console.log("Password Successfully Changed!")
+            .then((msg) => {
+                console.log(msg)
             })
             .catch(error => console.log(error));
 
@@ -79,7 +77,7 @@ const handleSubmit = (event) => {
                 {' '}
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onSubmit={handleSubmit} onClick={toggle}>Update Password</Button>{' '}
+                    <Button color="primary" onClick={handleClick}>Update Password</Button>{' '}
                     <Button color="secondary" onClick={toggle}>Cancel</Button>
                 </ModalFooter>
             </Modal>

@@ -11,7 +11,17 @@
     height: 100%;
     overflow: auto;
     background-color: rgb(180, 223, 229, .5);
-    color: white
+    color: white;
+    box-shadow:
+    0 0.4px 12.9px rgba(0, 0, 0, 0.071),
+    0 0.9px 33.3px rgba(0, 0, 0, 0.1),
+    0 1.8px 69.2px rgba(0, 0, 0, 0.103),
+    0 3.1px 130px rgba(0, 0, 0, 0.099),
+    0 5.8px 237.4px rgba(0, 0, 0, 0.09),
+    0 14px 500px rgba(0, 0, 0, 0.08)
+  ;
+  
+
 }
 
 @media screen and (max-width: 700px) {
@@ -39,6 +49,15 @@
     width: 200px;
     border-radius: 50%;
     margin-bottom: 10px;
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    0 12.5px 10px rgba(0, 0, 0, 0.035),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    0 100px 80px rgba(0, 0, 0, 0.07)
+  ;
+
 }
 
 .footer{
@@ -51,4 +70,15 @@
 .footerLink {
     color: #303c6c;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+@media screen and (max-width: 700px) {
+  .footer{
+    position: fixed;
+    bottom: 0;
+    margin-left: 0px;
+    width: 100%;
+    z-index: 100;
+    background-color: rgb(180, 223, 229, .7);
+  }
 }

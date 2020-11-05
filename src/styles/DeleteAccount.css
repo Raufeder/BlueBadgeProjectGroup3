@@ -1,4 +1,5 @@
 .deleteAccount:hover{
     color:red;
     text-decoration: underline;
+    cursor: pointer;
  }

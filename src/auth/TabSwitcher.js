@@ -5,6 +5,7 @@ import classnames from 'classnames';
 
 import Login from "./Login";
 import Register from "./Register";
+import '../styles/TabSwitcher.css';
 
 const TabSwitcher = (props) => {
 
@@ -14,30 +15,36 @@ const TabSwitcher = (props) => {
         if(activeTab !== tab) setActiveTab(tab);
     }
 
-    let navItemStyle = { backgroundColor: "white", width: "47%", borderRadius: "5px 5px 0px 0px" };
+    let navItemStyle = { 
+        backgroundColor: "#b6b6b6af", 
+        width: "47%",
+        borderRadius: "5px 5px 0px 0px", 
+        color: "black",
+        fontSize: "20px" };
 
     return (
-        <div style={{width: "60%", height: "40%", marginLeft: "auto", marginRight: "auto"}}>
-            <Nav style={{ width: "100%"}}tabs>
-                <NavItem style={navItemStyle}>
-                <NavLink
+        <div className="tabSwitcher">
+            <Nav tabs>
+                <NavItem 
+                style={navItemStyle} >
+                <NavLink 
                     className={classnames({ active: activeTab === '1' })}
                     onClick={() => { toggle('1'); }}
                 >
-                    Login
+                    <p className="LoginText">Login</p>
                 </NavLink>
-                </NavItem>
+                </NavItem >
                 <div style={{ width: "6%" }}></div>
                 <NavItem style={navItemStyle}>
                 <NavLink
                     className={classnames({ active: activeTab === '2' })}
                     onClick={() => { toggle('2'); }}
                 >
-                    Register
+                    <p className="LoginText">Register</p>
                 </NavLink>
                 </NavItem>
             </Nav>
-            <TabContent style={{border: "1px solid black"}} activeTab={activeTab}>
+            <TabContent activeTab={activeTab}>
                 <TabPane tabId="1">
                     <Login fetchInfo={props.fetchInfo} updateToken={props.updateToken} setIsLoggedIn={props.setIsLoggedIn} />
                 </TabPane>

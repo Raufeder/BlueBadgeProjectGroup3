@@ -123,7 +123,6 @@ function randomHairColorGeneration() {
 
   let rndCharHair = `${rndHairLength} ${rndHairTexture} ${rndHairColor} hair ${grayHairMessage}` //  THIS IS THE WHOLE HAIR DESCRIPTION
   console.log("Hair is:", rndCharHair);
-  console.log("___________________________________________");
 
   return rndCharHair;
 };
@@ -166,8 +165,7 @@ function randomEyeColorGeneration() {
     let eyeColorTuples = [ [blackEyeColorsListRndChoice, 0.15], [blueEyeColorsListRndChoice, 0.27], [brownEyeColorsListRndChoice, 0.30], [grayEyeColorsListRndChoice, 0.08], [greenEyeColorsListRndChoice, 0.15], [violetEyeColorsListRndChoice, 0.05] ];
     let rndCharEyeColor = getRandomValueFromTuples(eyeColorTuples);  // THIS IS THE RANDOM EYE COLOR
     console.log("Eye color is:", rndCharEyeColor)
-    console.log("___________________________________________");
-    
+      
     return rndCharEyeColor;
 };
 
@@ -189,7 +187,6 @@ function randomBodyTypeGeneration() {
 
   let rndCharBodyType = bodyDescriptorList[rollBodyDescriptorList];  // THIS IS THE RANDOM BODY DESCRIPTOR
   console.log("Body/Build descriptor:", rndCharBodyType);
-  console.log("___________________________________________");
 
   return rndCharBodyType;
 };
@@ -199,14 +196,13 @@ function randomBodyTypeGeneration() {
 function randomPersonalityPolarOppGeneration() {
 
   // CharPersonalityPolarOpp... Polar opposites personality descriptor
-  let polarOppositesList = ['pessemistic', 'optimistic', 'arrogant', 'humble', 'witty', 'dry', 'pleasant', 'unpleasant', 'friendly', 'unfriendly',
+  let polarOppositesList = ['pessimistic', 'optimistic', 'arrogant', 'humble', 'witty', 'dry', 'pleasant', 'unpleasant', 'friendly', 'unfriendly',
                         'modest', 'conceited', 'patient', 'impatient', 'overachiever', 'underachiever', 'polite', 'impolite', 'graceful', 'clumsy', 'misanthrope', 'philanthrope', 'relaxed', 'uptight', 'egocentric', 'selfless', 'night owl', 'early bird', 'lucky', 'unlucky', 'gullable', 'skeptical', 'ill-tempered', 'even-tempered'
                       ];
   let rollPolarOpposites = Math.floor( Math.random() * polarOppositesList.length );
 
   let rndCharPersonalityPolarOpp = polarOppositesList[rollPolarOpposites];  // THIS IS THE RANDOM POLOR OPPOSITE DESCRIPTOR
   console.log("Personality with polar opposite:", rndCharPersonalityPolarOpp);
-  console.log("___________________________________________");
 
   return rndCharPersonalityPolarOpp;
 };
@@ -225,7 +221,6 @@ function randomPersonalityDescriptorGeneration() {
 
   let rndCharPersonalityDescriptor = personalityDescriptorsList[rollpersonalityDescriptorsList];  // THIS IS THE RANDOM PERSONALITY DESCRIPTOR
   console.log("Personality descriptor:", rndCharPersonalityDescriptor);
-  console.log("___________________________________________");
 
   return rndCharPersonalityDescriptor;
 };
@@ -240,7 +235,6 @@ function randomPersonalityQuirkGeneration() {
 
   let rndCharPersonalityQuirk = personalityQuirksList[rollPersonalityQuirksList];  // THIS IS THE RANDOM PERSONALITY QUIRK
   console.log("Personality quirk:", rndCharPersonalityQuirk);
-  console.log("___________________________________________");
 
   return rndCharPersonalityQuirk;
 };
@@ -269,7 +263,6 @@ function randomRelationshipStatusGeneration() {
     rndCharRelationshipStatus = "single";  // THIS IS THE RELATIONSHIP STATUS
   };
   console.log("Relationship status:", rndCharRelationshipStatus);
-  console.log("___________________________________________");
 
   return rndCharRelationshipStatus;
 };
@@ -332,7 +325,6 @@ function randomNumberOfChildrenGeneration() {
   };
 
   console.log("Number of children:", rndCharChildren);
-  console.log("___________________________________________");
 
   return rndCharChildren;
 };
@@ -343,7 +335,7 @@ function randomNumberOfChildrenGeneration() {
 function randomPersonalityTypeGeneration() {
 
   let MyersBriggsList = [ [ [ "ISTJ", "Introverted-Sensing-Thinking-Judging", "often called 'inspectors', they have a have a keen sense of right and wrong, especially in their area of interest and/or responsibility. They are noted for devotion to duty; Punctuality is their watchword."], 0.12],
-  [ [ "ISTP", "Introverted-Sensing-Thinking-Perceiving", "fundamentally peformers, their interests tend to be mechanical, rather than artistic, and rarely present an impression of constant activity.  They typically lay dormant, saving energy for a worthy project in which they then launch themselves."], 0.05],
+  [ [ "ISTP", "Introverted-Sensing-Thinking-Perceiving", "fundamentally performers, their interests tend to be mechanical, rather than artistic, and rarely present an impression of constant activity.  They typically lay dormant, saving energy for a worthy project in which they then launch themselves."], 0.05],
   [ [ "ESTP", "Extraverted-Sensing-Thinking-Perceiving", "spontaneous, active folk, they get great satisfaction from acting on their impulses.  Activities involving great power, speed, thrill and risk are the most attractive and chronically stifling these impulses will make them feel 'dead inside'."], 0.05],
   [ [ "ESTJ", "Extraverted-Sensing-Thinking-Judging", "often called 'supervisors', they thrive on order and continuity, and being extraverts, their focus involves organization of people.  They enjoy organizing and mobilizing people according to their own theories and agendas, but are content to enforce 'the rules' handed down to them."], 0.09],
   [ [ "ISFJ", "Introverted-Sensing-Feeling-Judging", "characterized above all by their desires to serve others and their need to be needed.  Typically bound by social conventions, their form of service will tend to exclude moral/political controversy and intead be local, personal and practical."], 0.11],
@@ -353,7 +345,7 @@ function randomPersonalityTypeGeneration() {
   [ [ "INFJ", "Introverted-Intuitive-Feeling-Judging", "are distinguished by both the complexity of their character and the unusual range and depth of their talents.  Strongly humanitarian, they tend to be idealists with a preference for closure and completion; as such, they are generally doers and dreamers.  This rare combination often results in them taking on a disproportioinate amount of responsibility."], 0.04],
   [ [ "INFP", "Introverted-Intuitive-Feeling-Perceiving", "seeing life through rose-colored glasses, they never seem to lose their sense of wonder.  The mundane world of objects come to life for them and they have the ability to see the good in almost anyone or anything."], 0.05],
   [ [ "ENFP", "Extraverted-Intuitive-Feeling-Perceiving", "a combination of idea-people and people-people, they see everyone and everything as part of a cosmic whole.  They want to both help and to be liked and admired by other people, on both an individual and a humanitarian level.  They are outgoing, warm and genuinely like other people and often have the kind of zany charm that even stodgy types will enjoy and appreciate."], 0.07],
-  [ [ "ENFJ", "Extraverted-Intuitive-Feeling-Judging", "the benevolent 'pedagogues' of humanity, they have tremendous charm which draw many into their grand schemes and under their tutelage.  Helpers and enablers, they have tremendous power to manipulate others with their phenomenal skills and unique salesmanship.  They are also global learners who see the big picture.  They can juggle an amazing number of responsibiities and have great entrepreneurial ability."], 0.04],
+  [ [ "ENFJ", "Extraverted-Intuitive-Feeling-Judging", "the benevolent 'pedagogues' of humanity, they have tremendous charm which draw many into their grand schemes and under their tutelage.  Helpers and enablers, they have tremendous power to manipulate others with their phenomenal skills and unique salesmanship.  They are also global learners who see the big picture.  They can juggle an amazing number of responsibilities and have great entrepreneurial ability."], 0.04],
   [ [ "INTJ", "Introverted-Intuitive-Thinking-Judging", "typically appear to project an aura of self-confidence that can be mistaken for arrogance by the less decisive, their 'definiteness' is quite specific, its source lies in the specialized knowledge systems that most people of this type start building at an early age.  When it comes to their own areas of expertise, they can tell you almost immediately whether or not they can be of assistance.  They know what they know, and more importantly, know what they don't know.  Typically perfectionists, they have a seemingly endless capacity for improving upon anything that takes their interest."], 0.05],
   [ [ "INTP", "Introverted-Intuitive-Thinking-Perceiving", "are pensive, analytical folk.   They often venture so deeply into thought that they seem detached and oblivious to the world around them.  Precise with language and description, they often correct (or want to) others if the shade of meaning is even a little off.  Usually easy-going and amenable to nearly anything, whenl their principles are violated, they can become inflexible and outspoken."], 0.04],
   [ [ "ENTP", "Extraverted-Intuitive-Thinking-Perceiving", "usually labeled as 'clever', they can juggle a half dozen ideas in their minds while delivering a lecture on the most obstuse topic.  Verbally and cerebrally quick, they generally love to argue, for both the sake of argument and to display their debating skills... often playing the devil's advocate.  This will often confuse and upset those who do not understand the concept of argument as sport."], 0.04],
@@ -382,7 +374,6 @@ function randomPersonalityTypeGeneration() {
 
   let rndCharPersonalityType = getRandomValueFromTuples(personalityTypeTuples);  // THIS IS PERSONALITY TYPE
   console.log("Personality type:", rndCharPersonalityType);
-  console.log("___________________________________________");
 
   return rndCharPersonalityType;
 };
@@ -399,7 +390,7 @@ function randomNameGeneration() {
   let rndMostCommonFirstNamesInLastCentury = mostCommonFirstNamesInLastCentury[rndDieRoll(100)];  //  Most popular name pair of last century
 
   // 1920-1950
-  let mostCommonNamesCohort3 = [ "Larry / Sadie", "Emil / Regina", "Antonio / Victoria", "Wilfred / Henrietta", "Elbert / Della", "Juan / Bettie", "Alan / Lila", "Allan / Fern", "Lonnie / Faye", "Nelson / Johnnie", "Forrest / Jeanette", "Oscar / Ellen", "Gene / Lucy", "Jerry / Minnie", "Douglas / Sylvia", "Johnnie / Donna", "Claude / Leona", "Don / Rosemary", "Eddie / Stella", "Roland / Mattie", "Everett / Margie", "Maurice / Genevieve", "Charlie / Julia", "Warren / Rosemary", "Jerome / Jeanette", "Jesse / Marian", "Patrick/ Willie", "Stephen / Beatrice", "Curtis / Margie", "Arnold / Billie", "Gilbert / Vivian", "Elmer / Eva", "Lester / Kathryn", "Benny Genevieve", "Clifton / Cynthia", "Archie / Nina", "Oliver / Patty", "Clinton / Fannie", "Barry / Diana", "Juan / Jennie", "Salvatore / Hilda", "Nelson / Marguerite", "Jon / Johnnie", "Alex / Daisy", "Keith / Anita", "Clifford / Dianne", "Rodney / Ruby", "Gordon / Irene", "Jimmie / Juanita", "Jesse / Maureen", "Vincent / Loretta", "Warren / Jeannette", "Lloyd / Constance", "Leon / Lynn", "Jerome / Marlene", "Virgil / Marianne", "Morris / Stephanie", "Matthew / Jill", "Earnest / Mattie", "Lyle / Minnie", "Max / Caroline", "Bennie / Michele", "Wendell / Veronica", "Kent / Patty", "JJonathan / Rosie", "Fredrick / Stella" ];
+  let mostCommonNamesCohort3 = [ "Larry / Sadie", "Emil / Regina", "Antonio / Victoria", "Wilfred / Henrietta", "Elbert / Della", "Juan / Bettie", "Alan / Lila", "Allan / Fern", "Lonnie / Faye", "Nelson / Johnnie", "Forrest / Jeanette", "Oscar / Ellen", "Gene / Lucy", "Jerry / Minnie", "Douglas / Sylvia", "Johnnie / Donna", "Claude / Leona", "Don / Rosemary", "Eddie / Stella", "Roland / Mattie", "Everett / Margie", "Maurice / Genevieve", "Charlie / Julia", "Warren / Rosemary", "Jerome / Jeanette", "Jesse / Marian", "Patrick/ Willie", "Stephen / Beatrice", "Curtis / Margie", "Arnold / Billie", "Gilbert / Vivian", "Elmer / Eva", "Lester / Kathryn", "Benny Genevieve", "Clifton / Cynthia", "Archie / Nina", "Oliver / Patty", "Clinton / Fannie", "Barry / Diana", "Juan / Jennie", "Salvatore / Hilda", "Nelson / Marguerite", "Jon / Johnnie", "Alex / Daisy", "Keith / Anita", "Clifford / Dianne", "Rodney / Ruby", "Gordon / Irene", "Jimmie / Juanita", "Jesse / Maureen", "Vincent / Loretta", "Warren / Jeannette", "Lloyd / Constance", "Leon / Lynn", "Jerome / Marlene", "Virgil / Marianne", "Morris / Stephanie", "Matthew / Jill", "Earnest / Mattie", "Lyle / Minnie", "Max / Caroline", "Bennie / Michele", "Wendell / Veronica", "Kent / Patty", "Jonathan / Rosie", "Fredrick / Stella" ];
   let rndMostCommonNamesCohort3 = mostCommonFirstNamesInLastCentury[rndDieRoll(mostCommonNamesCohort3.length)];  //  Cohort 3 random name pair
 
   // 1950-1980
@@ -520,9 +511,10 @@ function getRandomPersonalityType() {
   return CharPersonalityType;
 };
 
+
 // *****  PERSONALITY POLAR OPPOSITE  *****
 function randomPersonalityPolarOpposite() {
-  let CharPersonalityPolarOpp = randomPersonalityDescriptorGeneration();
+  let CharPersonalityPolarOpp = randomPersonalityPolarOppGeneration();
   return CharPersonalityPolarOpp;
 };
 

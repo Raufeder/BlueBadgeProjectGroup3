@@ -34,7 +34,11 @@ const DeleteAccount = (props) => {
               password: password
           }})
       })
-      .then(response => {console.log(response); setModal(false)})
+      .then(response => {
+        setModal(false);
+        localStorage.clear("sessionToken"); 
+        props.setIsLoggedIn(false);
+      })
       .catch(error => console.log(error));
   }
 };
