@@ -15,9 +15,9 @@ const Account = (props) => {
     return (
         <div>
         
-            <div className="profilePicture"><UpdateProfileImage  userimg={accountInfo.url_userimage}/><br/></div>
+            <div className="profilePicture"><UpdateProfileImage  userimg={accountInfo.url_userimage}/><br/>Profile Image</div>
+            <div className="accountHeader"><h1 className="myAcc">My Account</h1></div>
                 <div className="mainAcctDiv">
-                <div className="accountHeader">- My Account -</div>
                 <div className="userName">{accountInfo.username}</div>
                 <div className="password">Password:   ****************</div>
                 <div className="changePassword">{ showPasswordModal ? <ChangePasswordModal username={accountInfo.username} /> : <></> }</div>
