@@ -66,7 +66,7 @@ const CreateCharacter = (props) => {
                     charAge: exportObject.getRandomAge(),
                     charRelationshipStatus: exportObject.getRandomRelationshipStatus(),
                     charChildren: exportObject.getRandomNumberOfChildren(),
-                    charOccupation: " - edit add an occupation -",
+                    charOccupation: " - edit to add an occupation -",
                     charDescription: " - edit to add a description -",
                     charHistory: " - edit to add a character history -",
                     charPersonalityType: exportObject.getRandomPersonalityType(),
@@ -111,7 +111,7 @@ const CreateCharacter = (props) => {
             })
         }).then( (res) => { return res.json(); } )
         .then( (data) => {
-            //console.log(data);
+            console.log(data);
         })
     };
 
