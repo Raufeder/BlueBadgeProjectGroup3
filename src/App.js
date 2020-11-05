@@ -59,7 +59,6 @@ function App() {
     })
   }
 
-  let pageContainerStyle = {position: "fixed", left: "350px", right: "0px", height: "100%", overflow: "auto"};
   return (
     
     <div className="App">
@@ -73,29 +72,29 @@ function App() {
        <Switch>
           { isLoggedIn ? 
             <Route exact path="/">
-              <div style={pageContainerStyle}><MyCharacters fetchCharacters={fetchCharacters} characterList={characterList} /></div>
+              <div className="pageContainer"><MyCharacters fetchCharacters={fetchCharacters} characterList={characterList} /></div>
             </Route> : <></> 
           }
           <Route exact path="/account">
-            <div style={pageContainerStyle}><Account setIsLoggedIn={setIsLoggedIn} accountInfo={accountInfo} userimg={accountInfo.url_userimage}/></div>
+            <div className="pageContainer"><Account setIsLoggedIn={setIsLoggedIn} accountInfo={accountInfo} userimg={accountInfo.url_userimage}/></div>
           </Route>
           <Route exact path="/mycharacters">
-            <div style={pageContainerStyle}><MyCharacters fetchCharacters={fetchCharacters} characterList={characterList} /></div>
+            <div className="pageContainer"><MyCharacters fetchCharacters={fetchCharacters} characterList={characterList} /></div>
           </Route>
           <Route exact path="/createnewcharacter" key="createRoute" >
-            <div style={pageContainerStyle}><CreateCharacter mode={"Create"}/></div>
+            <div className="pageContainer"><CreateCharacter mode={"Create"}/></div>
           </Route>
           <Route path="/viewcharacter/:id" key="viewRoute">
-            <div style={pageContainerStyle}><CreateCharacter mode={"View"} characterList={characterList} /></div>
+            <div className="pageContainer"><CreateCharacter mode={"View"} characterList={characterList} /></div>
           </Route>
           <Route exact path="/about">
-            <div style={pageContainerStyle}><About /></div>
+            <div className="pageContainer"><About /></div>
           </Route>
           <Route exact path="/contactus">
-            <div style={pageContainerStyle}><ContactUs /></div>
+            <div className="pageContainer"><ContactUs /></div>
           </Route>
           <Route exact path="/privacypolicy">
-            <div style={pageContainerStyle}><PrivacyPolicy /></div>
+            <div className="pageContainer"><PrivacyPolicy /></div>
           </Route>
         </Switch>
       </Router>

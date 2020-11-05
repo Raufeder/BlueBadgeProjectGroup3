@@ -110,7 +110,6 @@ const CreateCharacter = (props) => {
                 "authorization": "Bearer " + localStorage.getItem("sessionToken")
             })
         }).then( (response) => response.json() )    
-        //}).then( (res) => { return res.json(); } )
         .then( (data) => {
             console.log(data);
         })
