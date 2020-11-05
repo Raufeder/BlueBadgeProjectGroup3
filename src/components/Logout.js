@@ -7,7 +7,7 @@ class Logout extends Component {
 
     render() {
         return (
-            <div style={{position: "fixed", top: "50px", right: "50px", zIndex: "100"}}>
+            <div style={{position: "fixed", top: "10px", right: "50px", zIndex: "100"}}>
                 <Button className="customLogout" onClick={this.logout}>Logout</Button>
             </div>
         );
