@@ -16,8 +16,8 @@ const TabSwitcher = (props) => {
     }
 
     let navItemStyle = { 
-        backgroundColor: "white", 
-        width: "47%", 
+        backgroundColor: "#b6b6b6af", 
+        width: "47%",
         borderRadius: "5px 5px 0px 0px", 
         color: "black",
         fontSize: "20px" };

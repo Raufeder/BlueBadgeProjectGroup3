@@ -250,7 +250,7 @@ const CreateCharacter = (props) => {
                             </Row></Container>
                         </div>
                         <div class="picContainer" >
-                            <Button onClick={deleteCharacter} color="danger" >Delete Character</Button>
+                            <Button onClick={deleteCharacter} id="delCharBtn" color="danger" >Delete Character</Button>
                             <IndividualCharacter charImg={charImg} alt="Character Image" />
                         </div>
                     </div>
