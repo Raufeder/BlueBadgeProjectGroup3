@@ -72,7 +72,7 @@ const CreateCharacter = (props) => {
                     charPersonalityType: exportObject.getRandomPersonalityType(),
                     charPersonalityPolarOpp: exportObject.randomPersonalityPolarOpposite(),
                     charPersonalityDescription: exportObject.getRandomPersonalityDescription(),
-                    charPersonalityQuirk: exportObject.getRandomPersonalityQuirk(),
+                    charPersonalityQuirk: exportObject.getRandomPersonalityQuirk()
                 };
 
                 setCharData(charModel);
@@ -90,7 +90,7 @@ const CreateCharacter = (props) => {
         console.log(elementArr);
         let tObj = { Character: {} };
         let charKeyMod = 0;
-        for(let i = 0; i < keys.length; i++){
+        for(let i = 0; i <= keys.length; i++){
             if( elementArr[i].type === "text" ){ tObj.Character[keys[i - charKeyMod]] = elementArr[i].value; }
             else{ charKeyMod++; } // this is to skip all form elements that aren't text
             console.log( i + " " + keys[i] + " = " + elementArr[i].value);

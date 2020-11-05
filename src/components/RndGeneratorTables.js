@@ -164,7 +164,7 @@ function randomEyeColorGeneration() {
 
     // get random eye color; percent used based on actually population statistics
     let eyeColorTuples = [ [blackEyeColorsListRndChoice, 0.15], [blueEyeColorsListRndChoice, 0.27], [brownEyeColorsListRndChoice, 0.30], [grayEyeColorsListRndChoice, 0.08], [greenEyeColorsListRndChoice, 0.15], [violetEyeColorsListRndChoice, 0.05] ];
-    let rndCharEyeColor = `${getRandomValueFromTuples(eyeColorTuples)}`;  // THIS IS THE RANDOM EYE COLOR
+    let rndCharEyeColor = getRandomValueFromTuples(eyeColorTuples);  // THIS IS THE RANDOM EYE COLOR
     console.log("Eye color is:", rndCharEyeColor)
     console.log("___________________________________________");
     
@@ -199,7 +199,7 @@ function randomBodyTypeGeneration() {
 function randomPersonalityPolarOppGeneration() {
 
   // CharPersonalityPolarOpp... Polar opposites personality descriptor
-  let polarOppositesList = ['pessemistic', 'optimistic', 'arrogant', 'humble', 'witty', 'dry', 'pleasant', 'unpleasant', 'friendly', 'unfriendly',
+  let polarOppositesList = ['pessimistic', 'optimistic', 'arrogant', 'humble', 'witty', 'dry', 'pleasant', 'unpleasant', 'friendly', 'unfriendly',
                         'modest', 'conceited', 'patient', 'impatient', 'overachiever', 'underachiever', 'polite', 'impolite', 'graceful', 'clumsy', 'misanthrope', 'philanthrope', 'relaxed', 'uptight', 'egocentric', 'selfless', 'night owl', 'early bird', 'lucky', 'unlucky', 'gullable', 'skeptical', 'ill-tempered', 'even-tempered'
                       ];
   let rollPolarOpposites = Math.floor( Math.random() * polarOppositesList.length );
@@ -520,9 +520,10 @@ function getRandomPersonalityType() {
   return CharPersonalityType;
 };
 
+
 // *****  PERSONALITY POLAR OPPOSITE  *****
 function randomPersonalityPolarOpposite() {
-  let CharPersonalityPolarOpp = randomPersonalityDescriptorGeneration();
+  let CharPersonalityPolarOpp = randomPersonalityPolarOppGeneration();
   return CharPersonalityPolarOpp;
 };
 
