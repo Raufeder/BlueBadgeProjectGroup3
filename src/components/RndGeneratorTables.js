@@ -121,7 +121,7 @@ function randomHairColorGeneration() {
     grayHairMessage = "";
   };
 
-  let rndCharHair = `Hair: ${rndHairLength} ${rndHairTexture} ${rndHairColor} hair ${grayHairMessage}` //  THIS IS THE WHOLE HAIR DESCRIPTION
+  let rndCharHair = `${rndHairLength} ${rndHairTexture} ${rndHairColor} hair ${grayHairMessage}` //  THIS IS THE WHOLE HAIR DESCRIPTION
   console.log("Hair is:", rndCharHair);
   console.log("___________________________________________");
 
@@ -164,7 +164,7 @@ function randomEyeColorGeneration() {
 
     // get random eye color; percent used based on actually population statistics
     let eyeColorTuples = [ [blackEyeColorsListRndChoice, 0.15], [blueEyeColorsListRndChoice, 0.27], [brownEyeColorsListRndChoice, 0.30], [grayEyeColorsListRndChoice, 0.08], [greenEyeColorsListRndChoice, 0.15], [violetEyeColorsListRndChoice, 0.05] ];
-    let rndCharEyeColor = `Eyes: ${getRandomValueFromTuples(eyeColorTuples)}`;  // THIS IS THE RANDOM EYE COLOR
+    let rndCharEyeColor = `${getRandomValueFromTuples(eyeColorTuples)}`;  // THIS IS THE RANDOM EYE COLOR
     console.log("Eye color is:", rndCharEyeColor)
     console.log("___________________________________________");
     
