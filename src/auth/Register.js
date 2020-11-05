@@ -34,10 +34,9 @@ const Register = (props) => {
                     })
                     .then(response => response.json())
                     .then(() => {
-                        console.log("User Registered Successfully!")
+                        alert ("User registered Successfully. Login to begin your journey!");
                     })
                     .catch(error => console.log(error));
-
                 } else {
                     alert("Passwords MUST match!");
                 }

@@ -72,7 +72,7 @@ const CreateCharacter = (props) => {
                     charPersonalityType: exportObject.getRandomPersonalityType(),
                     charPersonalityPolarOpp: exportObject.randomPersonalityPolarOpposite(),
                     charPersonalityDescription: exportObject.getRandomPersonalityDescription(),
-                    charPersonalityQuirk: exportObject.getRandomPersonalityQuirk(),
+                    charPersonalityQuirk: exportObject.getRandomPersonalityQuirk()
                 };
 
                 setCharData(charModel);

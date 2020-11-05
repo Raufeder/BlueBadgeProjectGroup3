@@ -121,9 +121,8 @@ function randomHairColorGeneration() {
     grayHairMessage = "";
   };
 
-  let rndCharHair = `Hair: ${rndHairLength} ${rndHairTexture} ${rndHairColor} hair ${grayHairMessage}` //  THIS IS THE WHOLE HAIR DESCRIPTION
+  let rndCharHair = `${rndHairLength} ${rndHairTexture} ${rndHairColor} hair ${grayHairMessage}` //  THIS IS THE WHOLE HAIR DESCRIPTION
   console.log("Hair is:", rndCharHair);
-  console.log("___________________________________________");
 
   return rndCharHair;
 };
@@ -164,10 +163,9 @@ function randomEyeColorGeneration() {
 
     // get random eye color; percent used based on actually population statistics
     let eyeColorTuples = [ [blackEyeColorsListRndChoice, 0.15], [blueEyeColorsListRndChoice, 0.27], [brownEyeColorsListRndChoice, 0.30], [grayEyeColorsListRndChoice, 0.08], [greenEyeColorsListRndChoice, 0.15], [violetEyeColorsListRndChoice, 0.05] ];
-    let rndCharEyeColor = `Eyes: ${getRandomValueFromTuples(eyeColorTuples)}`;  // THIS IS THE RANDOM EYE COLOR
+    let rndCharEyeColor = getRandomValueFromTuples(eyeColorTuples);  // THIS IS THE RANDOM EYE COLOR
     console.log("Eye color is:", rndCharEyeColor)
-    console.log("___________________________________________");
-    
+      
     return rndCharEyeColor;
 };
 
@@ -189,7 +187,6 @@ function randomBodyTypeGeneration() {
 
   let rndCharBodyType = bodyDescriptorList[rollBodyDescriptorList];  // THIS IS THE RANDOM BODY DESCRIPTOR
   console.log("Body/Build descriptor:", rndCharBodyType);
-  console.log("___________________________________________");
 
   return rndCharBodyType;
 };
@@ -199,14 +196,13 @@ function randomBodyTypeGeneration() {
 function randomPersonalityPolarOppGeneration() {
 
   // CharPersonalityPolarOpp... Polar opposites personality descriptor
-  let polarOppositesList = ['pessemistic', 'optimistic', 'arrogant', 'humble', 'witty', 'dry', 'pleasant', 'unpleasant', 'friendly', 'unfriendly',
+  let polarOppositesList = ['pessimistic', 'optimistic', 'arrogant', 'humble', 'witty', 'dry', 'pleasant', 'unpleasant', 'friendly', 'unfriendly',
                         'modest', 'conceited', 'patient', 'impatient', 'overachiever', 'underachiever', 'polite', 'impolite', 'graceful', 'clumsy', 'misanthrope', 'philanthrope', 'relaxed', 'uptight', 'egocentric', 'selfless', 'night owl', 'early bird', 'lucky', 'unlucky', 'gullable', 'skeptical', 'ill-tempered', 'even-tempered'
                       ];
   let rollPolarOpposites = Math.floor( Math.random() * polarOppositesList.length );
 
   let rndCharPersonalityPolarOpp = polarOppositesList[rollPolarOpposites];  // THIS IS THE RANDOM POLOR OPPOSITE DESCRIPTOR
   console.log("Personality with polar opposite:", rndCharPersonalityPolarOpp);
-  console.log("___________________________________________");
 
   return rndCharPersonalityPolarOpp;
 };
@@ -225,7 +221,6 @@ function randomPersonalityDescriptorGeneration() {
 
   let rndCharPersonalityDescriptor = personalityDescriptorsList[rollpersonalityDescriptorsList];  // THIS IS THE RANDOM PERSONALITY DESCRIPTOR
   console.log("Personality descriptor:", rndCharPersonalityDescriptor);
-  console.log("___________________________________________");
 
   return rndCharPersonalityDescriptor;
 };
@@ -240,7 +235,6 @@ function randomPersonalityQuirkGeneration() {
 
   let rndCharPersonalityQuirk = personalityQuirksList[rollPersonalityQuirksList];  // THIS IS THE RANDOM PERSONALITY QUIRK
   console.log("Personality quirk:", rndCharPersonalityQuirk);
-  console.log("___________________________________________");
 
   return rndCharPersonalityQuirk;
 };
@@ -269,7 +263,6 @@ function randomRelationshipStatusGeneration() {
     rndCharRelationshipStatus = "single";  // THIS IS THE RELATIONSHIP STATUS
   };
   console.log("Relationship status:", rndCharRelationshipStatus);
-  console.log("___________________________________________");
 
   return rndCharRelationshipStatus;
 };
@@ -332,7 +325,6 @@ function randomNumberOfChildrenGeneration() {
   };
 
   console.log("Number of children:", rndCharChildren);
-  console.log("___________________________________________");
 
   return rndCharChildren;
 };
@@ -382,7 +374,6 @@ function randomPersonalityTypeGeneration() {
 
   let rndCharPersonalityType = getRandomValueFromTuples(personalityTypeTuples);  // THIS IS PERSONALITY TYPE
   console.log("Personality type:", rndCharPersonalityType);
-  console.log("___________________________________________");
 
   return rndCharPersonalityType;
 };
@@ -399,7 +390,7 @@ function randomNameGeneration() {
   let rndMostCommonFirstNamesInLastCentury = mostCommonFirstNamesInLastCentury[rndDieRoll(100)];  //  Most popular name pair of last century
 
   // 1920-1950
-  let mostCommonNamesCohort3 = [ "Larry / Sadie", "Emil / Regina", "Antonio / Victoria", "Wilfred / Henrietta", "Elbert / Della", "Juan / Bettie", "Alan / Lila", "Allan / Fern", "Lonnie / Faye", "Nelson / Johnnie", "Forrest / Jeanette", "Oscar / Ellen", "Gene / Lucy", "Jerry / Minnie", "Douglas / Sylvia", "Johnnie / Donna", "Claude / Leona", "Don / Rosemary", "Eddie / Stella", "Roland / Mattie", "Everett / Margie", "Maurice / Genevieve", "Charlie / Julia", "Warren / Rosemary", "Jerome / Jeanette", "Jesse / Marian", "Patrick/ Willie", "Stephen / Beatrice", "Curtis / Margie", "Arnold / Billie", "Gilbert / Vivian", "Elmer / Eva", "Lester / Kathryn", "Benny Genevieve", "Clifton / Cynthia", "Archie / Nina", "Oliver / Patty", "Clinton / Fannie", "Barry / Diana", "Juan / Jennie", "Salvatore / Hilda", "Nelson / Marguerite", "Jon / Johnnie", "Alex / Daisy", "Keith / Anita", "Clifford / Dianne", "Rodney / Ruby", "Gordon / Irene", "Jimmie / Juanita", "Jesse / Maureen", "Vincent / Loretta", "Warren / Jeannette", "Lloyd / Constance", "Leon / Lynn", "Jerome / Marlene", "Virgil / Marianne", "Morris / Stephanie", "Matthew / Jill", "Earnest / Mattie", "Lyle / Minnie", "Max / Caroline", "Bennie / Michele", "Wendell / Veronica", "Kent / Patty", "JJonathan / Rosie", "Fredrick / Stella" ];
+  let mostCommonNamesCohort3 = [ "Larry / Sadie", "Emil / Regina", "Antonio / Victoria", "Wilfred / Henrietta", "Elbert / Della", "Juan / Bettie", "Alan / Lila", "Allan / Fern", "Lonnie / Faye", "Nelson / Johnnie", "Forrest / Jeanette", "Oscar / Ellen", "Gene / Lucy", "Jerry / Minnie", "Douglas / Sylvia", "Johnnie / Donna", "Claude / Leona", "Don / Rosemary", "Eddie / Stella", "Roland / Mattie", "Everett / Margie", "Maurice / Genevieve", "Charlie / Julia", "Warren / Rosemary", "Jerome / Jeanette", "Jesse / Marian", "Patrick/ Willie", "Stephen / Beatrice", "Curtis / Margie", "Arnold / Billie", "Gilbert / Vivian", "Elmer / Eva", "Lester / Kathryn", "Benny Genevieve", "Clifton / Cynthia", "Archie / Nina", "Oliver / Patty", "Clinton / Fannie", "Barry / Diana", "Juan / Jennie", "Salvatore / Hilda", "Nelson / Marguerite", "Jon / Johnnie", "Alex / Daisy", "Keith / Anita", "Clifford / Dianne", "Rodney / Ruby", "Gordon / Irene", "Jimmie / Juanita", "Jesse / Maureen", "Vincent / Loretta", "Warren / Jeannette", "Lloyd / Constance", "Leon / Lynn", "Jerome / Marlene", "Virgil / Marianne", "Morris / Stephanie", "Matthew / Jill", "Earnest / Mattie", "Lyle / Minnie", "Max / Caroline", "Bennie / Michele", "Wendell / Veronica", "Kent / Patty", "Jonathan / Rosie", "Fredrick / Stella" ];
   let rndMostCommonNamesCohort3 = mostCommonFirstNamesInLastCentury[rndDieRoll(mostCommonNamesCohort3.length)];  //  Cohort 3 random name pair
 
   // 1950-1980
@@ -520,9 +511,10 @@ function getRandomPersonalityType() {
   return CharPersonalityType;
 };
 
+
 // *****  PERSONALITY POLAR OPPOSITE  *****
 function randomPersonalityPolarOpposite() {
-  let CharPersonalityPolarOpp = randomPersonalityDescriptorGeneration();
+  let CharPersonalityPolarOpp = randomPersonalityPolarOppGeneration();
   return CharPersonalityPolarOpp;
 };
 
