@@ -9,9 +9,9 @@ const EditFieldInput = (props) => {
     return (
         <div style={{color:"black"}}>
             <InputGroup>
-                { mode === "View" ?
+                { mode === "View" || mode === "Create" ?
                 <InputGroupAddon addonType="prepend">
-                    <InputGroupText>{props.ph}</InputGroupText>
+                    <InputGroupText>{(props.ph).substring(4)}</InputGroupText>
                 </InputGroupAddon>
                 : <></>
                 }
@@ -24,9 +24,9 @@ const EditFieldInput = (props) => {
                 }
                 { mode === "Edit" ?
                 <>
-                    <InputGroupAddon addonType="append">
+                    { props.genBtnVisible ? <InputGroupAddon addonType="append">
                         <Button onClick={ (e) => { props.genFunc(props.ph); } } color="secondary" id="generateBtn" ><FaDice /></Button>
-                    </InputGroupAddon>
+                    </InputGroupAddon> : <></>}
                     <InputGroupAddon addonType="append">
                         <Button color="secondary" id="saveBtn" onClick={ (e) => { setMode("View"); props.saveFunc(e); } }><FaSave /></Button>
                     </InputGroupAddon>

@@ -7,6 +7,7 @@ const ContactUs = (props) => {
     return (
         <div className="contactForm">
           <h2> -  Contact Us  -</h2>
+          <div className="centerMe">
             <Form id="fs-frm" name="simple-contact-form" accept-charset="utf-8" action="https://formspree.io/f/xnqovbrl" method="post">
                 <FormGroup id="fs-frm-inputs">
                     <Label for="full-name" className="formLabels">Full Name</Label>
@@ -20,6 +21,7 @@ const ContactUs = (props) => {
                 </FormGroup>
                 <Input type="submit" value="Submit" id="inputButton"/>
             </Form>
+            </div>
         </div>
     )
 };

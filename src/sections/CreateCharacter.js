@@ -90,11 +90,12 @@ const CreateCharacter = (props) => {
         console.log(elementArr);
         let tObj = { Character: {} };
         let charKeyMod = 0;
-        for(let i = 0; i < keys.length; i++){
+        for(let i = 0; i < keys.length+charKeyMod; i++){
             if( elementArr[i].type === "text" ){ tObj.Character[keys[i - charKeyMod]] = elementArr[i].value; }
             else{ charKeyMod++; } // this is to skip all form elements that aren't text
             console.log( i + " " + keys[i] + " = " + elementArr[i].value);
         }
+        console.log("Built Object: ", tObj);
         return tObj;
     }
 
@@ -111,8 +112,10 @@ const CreateCharacter = (props) => {
             })
         }).then( (response) => response.json() )    
         .then( (data) => {
+            alert( "Character Successfully Created" );
             console.log(data);
         })
+        .catch( (err) => { alert(err); } )
     };
 
     const onSaveInput = (e) => {
@@ -241,7 +244,7 @@ const CreateCharacter = (props) => {
                                         Object.keys(splitData()[0]).map( (oneKey, i) => {
                                             return (
                                             <Col md="12" lg="12" xl="12">
-                                                <EditFieldInput genFunc={ generatorClick } changeFunc={onChangeInput} saveFunc={onSaveInput} value={charData[oneKey]} ph={oneKey} inMode={mode} />
+                                                <EditFieldInput genBtnVisible={ getGeneratorFunc(oneKey) ? true : false } genFunc={ generatorClick } changeFunc={onChangeInput} saveFunc={onSaveInput} value={charData[oneKey]} ph={oneKey} inMode={mode} />
                                             </Col>
                                             );
                                         })

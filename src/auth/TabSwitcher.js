@@ -46,7 +46,7 @@ const TabSwitcher = (props) => {
             </Nav>
             <TabContent activeTab={activeTab}>
                 <TabPane tabId="1">
-                    <Login  fetchInfo={props.fetchInfo} updateToken={props.updateToken} setIsLoggedIn={props.setIsLoggedIn} />
+                    <Login fetchInfo={props.fetchInfo} updateToken={props.updateToken} setIsLoggedIn={props.setIsLoggedIn} />
                 </TabPane>
                 <TabPane tabId="2">
                     <Register />

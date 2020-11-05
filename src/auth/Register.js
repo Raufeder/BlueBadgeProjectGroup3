@@ -13,45 +13,36 @@ const Register = (props) => {
     const triggerPasswordInputChange = (event) => setPassword(event.target.value);
     const triggerPasswordConfirmInputChange = (event) => setPasswordConfirm(event.target.value);
 
+    const usernameAndPasswordValidator= (value) => {
+        return ( value.length > 4 && (!(/^[A-Za-z0-9]+$/).test(value) || /([0-9]{1,})/.test(value)) );
+    };
+
     const registerSubmit = (event) => {
         event.preventDefault();
-
         if(username && password){
-            if(password === passwordConfirm) {
-                fetch(`${APIURL}user/register`, {
-                    method: 'POST',
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ user: {
-                        username: username,
-                        password: password
-                    }})
-                })
-                .then(response => response.json())
-                .then(() => {
-                    console.log("User Registered Successfully!")
-                    // fetch(`${APIURL}user/login`, {
-                    //     method: 'POST',
-                    //     headers: {
-                    //         "Content-Type": "application/json"
-                    //     },
-                    //     body: JSON.stringify({
-                    //         username: username,
-                    //         password: password
-                    //     })
-                    // })
-                    // .then(response => response.json())
-                    // .then((body) => {
-                    //     props.updateToken(data.sessionToken);
-                    // })
-                })
-                .catch(error => console.log(error));
+            if( usernameAndPasswordValidator(username) && usernameAndPasswordValidator(password) ){
+                if(password === passwordConfirm) {
+                    fetch(`${APIURL}user/register`, {
+                        method: 'POST',
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ user: {
+                            username: username,
+                            password: password
+                        }})
+                    })
+                    .then(response => response.json())
+                    .then(() => {
+                        console.log("User Registered Successfully!")
+                    })
+                    .catch(error => console.log(error));
 
-            } else {
-                alert("Passwords MUST match!");
-            }
-        }
+                } else {
+                    alert("Passwords MUST match!");
+                }
+            } else { alert("username and password must include a special character and a number and be at least {5} characters long!!"); }
+        } 
     };
 
 
