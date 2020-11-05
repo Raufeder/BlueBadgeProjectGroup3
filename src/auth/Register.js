@@ -30,21 +30,7 @@ const Register = (props) => {
                 })
                 .then(response => response.json())
                 .then(() => {
-                    console.log("User Registered Successfully!")
-                    // fetch(`${APIURL}user/login`, {
-                    //     method: 'POST',
-                    //     headers: {
-                    //         "Content-Type": "application/json"
-                    //     },
-                    //     body: JSON.stringify({
-                    //         username: username,
-                    //         password: password
-                    //     })
-                    // })
-                    // .then(response => response.json())
-                    // .then((body) => {
-                    //     props.updateToken(data.sessionToken);
-                    // })
+                    alert ("User registered Successfully. Login to begin your journey!");
                 })
                 .catch(error => console.log(error));
 
