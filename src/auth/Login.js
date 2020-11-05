@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
-
+import '../styles/Login.css'
 import APIURL from "../helpers/environment";
 
 const Login = (props) => {
@@ -34,18 +34,17 @@ const Login = (props) => {
      }
 
     return (
-        <div>
-            <h1>Login</h1>
-          <Form onSubmit={handleSubmit}>
+        <div >
+          <Form className="mainLogin" onSubmit={handleSubmit}>
           <FormGroup>
-                    <Label htmlFor="username">Username</Label>
-                   <Input onChange={(e) => setUsername(e.target.value)} name="username" type="text" value={username}/>
+                    <Label className="Label" htmlFor="username"></Label>
+                   <Input className="Input" placeholder="Username" onChange={(e) => setUsername(e.target.value)} name="username" type="text" value={username}/>
                 </FormGroup>
                 <FormGroup>
-                    <Label htmlFor="password">Password</Label>
-                    <Input onChange={(e) => setPassword(e.target.value)} name="password" type="password" value={password}/>
+                    <Label htmlFor="password"></Label>
+                    <Input className="Input" placeholder="Password" onChange={(e) => setPassword(e.target.value)} name="password" type="password" value={password}/>
                 </FormGroup>
-                <Button type="submit">Login</Button>
+                <Button className="Button" type="submit">Let's Go</Button>
             </Form> 
          </div>
      )

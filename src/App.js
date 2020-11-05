@@ -64,7 +64,7 @@ function App() {
     
     <div className="App">
     { isLoggedIn == false ? 
-      <><div className="logo"><img src={logo} alt="personary logo"/></div>
+      <><div className="logo"><img className="logoPic" src={logo} alt="personary logo"/></div>
       <div className="headline"><h1 className="mainHeadline">Create Characters. Plan Personas.</h1></div>
       <div className="subHead"><p>Create, edit, and save all of your characters personas in one easy-to-use tool.</p></div></> : <></>
     }

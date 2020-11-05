@@ -1,0 +1,27 @@
+.mainLogin{
+    padding-top: 50px;
+    height: 375px;
+
+}
+
+.Input{
+    width: 50%;
+    margin-left: 25%;
+
+}
+.Button{
+    background-color: #F4976C;
+    width: 200px;
+    height: auto;
+    font-size: 30px;
+    margin:auto;
+    text-align: center;
+    box-shadow:
+  0 3.6px 3.6px rgba(0, 0, 0, 0.041),
+  0 8.6px 8.7px rgba(0, 0, 0, 0.053),
+  0 16.3px 16.4px rgba(0, 0, 0, 0.06),
+  0 29px 29.3px rgba(0, 0, 0, 0.065),
+  0 54.3px 54.7px rgba(0, 0, 0, 0.068),
+  0 130px 131px rgba(0, 0, 0, 0.07)
+;
+}
