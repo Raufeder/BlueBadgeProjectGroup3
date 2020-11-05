@@ -11,7 +11,16 @@
     height: 100%;
     overflow: auto;
     background-color: rgb(180, 223, 229, .5);
-    color: white
+    color: white;
+    box-shadow:
+    0 3.6px 3.6px rgba(0, 0, 0, 0.041),
+    0 8.6px 8.7px rgba(0, 0, 0, 0.053),
+    0 16.3px 16.4px rgba(0, 0, 0, 0.06),
+    0 29px 29.3px rgba(0, 0, 0, 0.065),
+    0 54.3px 54.7px rgba(0, 0, 0, 0.068),
+    0 130px 131px rgba(0, 0, 0, 0.07)
+  ;
+
 }
 
 @media screen and (max-width: 700px) {

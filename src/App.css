@@ -1,9 +1,11 @@
-
+html{
+  background-color: #303c6c;
+  height:100%;
+}
 
 .App {
   text-align: center;
   background-color: #303c6c;
-  height: 900px;  
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
 }
@@ -26,7 +28,11 @@ h2{
   align-items: flex-start;
   justify-content: left;
   padding-left: 40px;
-  width: 200px;
+  width: 100px;
+}
+
+.logoPic{
+  width: 350px;
 }
 
 .headline{
@@ -49,7 +55,7 @@ h2{
   align-items: flex-start;
   justify-content: flex-start;
   align-content: flex-start;
-  padding-left: 70px;
+  padding-left: 72px;
   font-family: 'Times New Roman', Times, serif;
   color: #FBE8A6;
   font-size: 40px;
@@ -60,4 +66,8 @@ h2{
 
 p{
   line-height: 40px;
+}
+
+.button{
+  background-color: F4976C;
 }
